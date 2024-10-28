@@ -19,9 +19,9 @@ var default_fog_end = 500
 
 func _set_color_by_time():
 	match ingame_used_time["hour"]:
-		0, 1, 2, 4, 20, 21, 22, 23:
+		0, 1, 2, 3, 4, 20, 21, 22, 23:
 			des_color = Color("#14253e")
-		3, 5, 6, 7:
+		5, 6, 7:
 			des_color = Color("#ffd6e7")
 		17, 18, 19:
 			des_color = Color ("#ffa370")
