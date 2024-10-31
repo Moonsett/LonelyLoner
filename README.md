@@ -21,5 +21,5 @@ Night:
 - Slower color transition
 - Change rain sky color depending on time
 - Different environment sounds based on time
-- Add light sources around the map to make night time not so scary
+- Add (MORE) (Campfire doesn't count) light sources around the map to make night time not so scary
 - Learn how to code
