@@ -15,7 +15,7 @@ Evening:
 
 
 Night:
-![Night](https://github.com/Moonsett/LonelyLoner/blob/main/RepoAssets/Night.jpg)
+![Night](https://github.com/Moonsett/LonelyLoner/blob/main/RepoAssets/Night2.jpg)
 
 # Todo
 - Slower color transition
