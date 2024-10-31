@@ -1,5 +1,9 @@
 extends WorldEnvironment
 
+### Get OS time every 15 minutes, then check time range to see what color des_color should be
+### Figure out a way to do algebraic math on hex colors, maybe convert them to vectors and do math on those?
+### Maybe figure out good ambient lighting, too, idk (#ffa370 Sunset, #1a1426 Night, #d5eeff Day)
+
 var des_fog = 125
 var des_fog_end = 500
 var des_color = Color("#ffa370")
@@ -10,6 +14,8 @@ var current_os_time = null
 
 var default_fog = 125
 var default_fog_end = 500
+
+# Note for Firefly stuff: This is most certainly NOT how you do this!! Rewrite this later
 
 func _set_color_by_time():
 	match ingame_used_time["hour"]:
@@ -31,7 +37,7 @@ func _ready():
 	_set_color_by_time()
 
 func _check_time_deviation():
-	var current_os_time = Time.get_datetime_dict_from_system()
+	current_os_time = Time.get_datetime_dict_from_system()
 	if current_os_time["hour"] != ingame_used_time["hour"]:
 		ingame_used_time = Time.get_datetime_dict_from_system()
 		_set_color_by_time()
