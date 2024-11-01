@@ -1,6 +1,8 @@
 # LonelyLoner
 A mod that adds Day and Night (What? What?) To WEBFISHING
 
+(Download from Releases, or (probably more preferable) [Thunderstore](https://thunderstore.io/c/webfishing/p/Moonset/LonelyLoner/)!
+
 # Screenshots
 Adds 3 new world states based on time:
 
