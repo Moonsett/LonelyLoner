@@ -1,0 +1,7 @@
+{
+  "name": "LonelyLoner",
+  "version_number": "0.1.0",
+  "website_url": "https://github.com/Moonsett/LonelyLoner",
+  "description": "A mod that adds Day and Night (What? What?) To WEBFISHING",
+  "dependencies": ["NotNet-GDWeave-2.0.12"]
+}
