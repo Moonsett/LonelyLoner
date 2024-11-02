@@ -8,8 +8,8 @@ var min_timer = null
 var sec_timer = null
 var in_game_sec_timer = null
 var lh_timer = null
-var mode = "irl"
-var check_lh = true
+var mode = "RealTime"
+var check_lh = false
 var ingame_second_length = 0.1
 
 func _ready():
@@ -45,7 +45,7 @@ func _in_game_time_has_passed():
 
 func check_time():
 	match mode:
-		"IngameTime":
+		"RealTime":
 			real_time = Time.get_time_dict_from_system()
 			print(ID + ": " + str(real_time)) # Just for debug to make sure it be working
 			return real_time
