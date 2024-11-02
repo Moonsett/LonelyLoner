@@ -13,6 +13,7 @@ func _set_visibility_by_time():
 		8, 9, 10, 11, 12, 13, 14, 15, 16:
 			visible = false
 		_:
+			visible = false
 			print(str(self) + ": WHERE ARE YOU?!?! (could not set visibility by hour because hour is either overflowed or doesn't exist)")
 
 func _ready():
