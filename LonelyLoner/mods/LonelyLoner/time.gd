@@ -42,7 +42,7 @@ func _in_game_time_has_passed():
 		ingame_time["hour"] = ingame_time["hour"] + 1
 	if ingame_time["hour"] >= 24:
 		ingame_time = {"hour": 0, "minute": 0, "second": 0}
-		
+
 func check_time():
 	match mode:
 		"IngameTime":
@@ -61,7 +61,7 @@ func _poll_long_haul():
 				if real_time["minute"] == 30 || 0:
 					lh_timer = _create_long_haul_timer(lh_timer, 1800, "check_time")
 			"IngameTime":
-				if ingame_time[1] == 30 || 0:
+				if ingame_time["minute"] == 30 || 0:
 					pass # Call func that you want on that interval, will run multiple times, haven't done that logic yet
 
 # remove polling every second and start running by set interval
