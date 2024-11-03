@@ -47,10 +47,10 @@ func check_time():
 	match mode:
 		"RealTime":
 			real_time = Time.get_time_dict_from_system()
-			print(ID + ": " + str(real_time)) # Just for debug to make sure it be working
+#			print(ID + ": " + str(real_time)) # Just for debug to make sure it be working
 			return real_time
 		"IngameTime":
-			print(ID + ": " + str(ingame_time)) # Just for debug to make sure it be working
+#			print(ID + ": " + str(ingame_time)) # Just for debug to make sure it be working
 			return ingame_time
 
 # checks every second to see if it should switch to polling at a set interval
