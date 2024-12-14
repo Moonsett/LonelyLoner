@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/firefly.png-4a0f4dc7df44ae43e9db4b7f071e7c40.s3tc.stex"
-path.etc2="res://.import/firefly.png-4a0f4dc7df44ae43e9db4b7f071e7c40.etc2.stex"
+path.s3tc="res://.import/firefly.png-4d23ec0f680ae570ef36c8c8834ff58f.s3tc.stex"
+path.etc2="res://.import/firefly.png-4d23ec0f680ae570ef36c8c8834ff58f.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Textures/Particles/firefly.png"
-dest_files=[ "res://.import/firefly.png-4a0f4dc7df44ae43e9db4b7f071e7c40.s3tc.stex", "res://.import/firefly.png-4a0f4dc7df44ae43e9db4b7f071e7c40.etc2.stex" ]
+source_file="res://mods/LonelyLoner/Assets/Textures/Particles/firefly.png"
+dest_files=[ "res://.import/firefly.png-4d23ec0f680ae570ef36c8c8834ff58f.s3tc.stex", "res://.import/firefly.png-4d23ec0f680ae570ef36c8c8834ff58f.etc2.stex" ]
 
 [params]
 
