@@ -19,11 +19,11 @@ var LL_campfire = preload("res://mods/LonelyLoner/Assets/Scenes/campfire.tscn").
 var des_color = null
 var min_timer:Timer
 var sec_timer:Timer
-var in_game_sec_timer:Timer
+var in_game_min_timer:Timer
 var lh_timer:Timer
 var mode = "IngameTime"
 var check_lh = false
-var ingame_second_length = 0.0000000001
+var ingame_minute_length = 5
 var fireflies_bootstrapped = false
 var worldenv_bootstrapped = false
 
@@ -38,9 +38,9 @@ func _startup():
 			create_timer(min_timer, 60, "check_time") # Set the interval at which to poll irl time
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 		"IngameTime":
-			create_timer(min_timer, ingame_second_length, "check_time") # Set the interval at which to poll in game time
+			create_timer(min_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
 			#create_timer(sec_timer, 1, "_poll_long_haul")
-			create_timer(in_game_sec_timer, ingame_second_length, "_in_game_time_has_passed")
+			create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
 
 func _cleanup():
 	main_zone.disconnect("tree_exiting", self, "_cleanup")
@@ -73,7 +73,6 @@ func _node_scanner():
 
 func _physics_process(delta):
 	_node_scanner()
-	print(check_time())
 
 func _set_color_by_time(env):
 	var time = check_time()
@@ -99,12 +98,8 @@ func create_timer(timer, wait_by, function):
 	return timer
 
 func _in_game_time_has_passed():
-	ingame_time["second"] = ingame_time["second"] + 1
-	emit_signal("second_has_passed")
-	if ingame_time["second"] >= 60:
-		ingame_time["second"] = 0
-		ingame_time["minute"] = ingame_time["minute"] + 1
-		emit_signal("minute_has_passed")
+	ingame_time["minute"] = ingame_time["minute"] + 1
+	emit_signal("minute_has_passed")
 	if ingame_time["minute"] >= 60:
 		ingame_time["minute"] = 0
 		ingame_time["hour"] = ingame_time["hour"] + 1
