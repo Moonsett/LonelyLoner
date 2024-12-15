@@ -14,6 +14,10 @@ config/name="LonelyLoner"
 config/description="Thank you for reading through this code, please make an issue if there's anything that could be made better!"
 config/icon="res://icon.png"
 
+[autoload]
+
+LonelyLoner="*res://mods/LonelyLoner/main.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

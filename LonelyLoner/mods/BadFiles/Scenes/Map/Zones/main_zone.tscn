@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=2]
+[gd_scene load_steps=150 format=2]
 
 [ext_resource path="res://Assets/Models/sand.material" type="Material" id=1]
 [ext_resource path="res://Scenes/Map/Tools/area_entrance.tscn" type="PackedScene" id=2]
@@ -88,8 +88,6 @@
 [ext_resource path="res://Scenes/Interactables/NPCs/npc_main.tscn" type="PackedScene" id=86]
 [ext_resource path="res://Scenes/Interactables/NPCs/npc_general.tscn" type="PackedScene" id=87]
 [ext_resource path="res://Sounds/waterfall.ogg" type="AudioStream" id=88]
-[ext_resource path="res://Assets/Textures/Particles/firefly.png" type="Texture" id=89]
-[ext_resource path="res://Scenes/Map/Zones/fireflies.gd" type="Script" id=90]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 0.75, 0.75 )
@@ -563,7 +561,6 @@ params_diffuse_mode = 4
 params_specular_mode = 4
 params_cull_mode = 2
 params_billboard_mode = 1
-albedo_texture = ExtResource( 89 )
 
 [sub_resource type="QuadMesh" id=387]
 material = SubResource( 386 )
@@ -2618,7 +2615,6 @@ material/0 = ExtResource( 72 )
 
 [node name="fireflies" type="Spatial" parent="props"]
 unique_name_in_owner = true
-script = ExtResource( 90 )
 
 [node name="fireflies" type="Particles" parent="props/fireflies"]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 89.2392, 4.99541, -30.2179 )
@@ -2877,6 +2873,8 @@ light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
 
+[node name="Node" type="Node" parent="props/fireflies/flylight15"]
+
 [node name="flylight16" type="OmniLight" parent="props/fireflies"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.8011, 9.52395, -76.4564 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
@@ -2940,6 +2938,8 @@ light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
+
+[node name="Node" type="Node" parent="props/fireflies"]
 
 [node name="trees" type="Spatial" parent="."]
 

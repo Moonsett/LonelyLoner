@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://mods/LonelyLoner/Assets/Textures/Particles/firefly.png" type="Texture" id=9]
+
+[sub_resource type="ParticlesMaterial" id=22]
+lifetime_randomness = 0.58
+emission_shape = 1
+emission_sphere_radius = 5.58
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.4
+radial_accel = 1.98
+radial_accel_random = 0.72
+damping = 1.59
+damping_random = 1.0
+angle = 17.3
+angle_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=21]
+flags_transparent = true
+flags_unshaded = true
+params_diffuse_mode = 4
+params_cull_mode = 2
+params_billboard_mode = 1
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="QuadMesh" id=23]
+material = SubResource( 21 )
+size = Vector2( 0.02, 0.02 )
+
+[node name="LL_campfire" type="Spatial"]
+
+[node name="campfire_light" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97414, 0 )
+light_color = Color( 0.968627, 0.803922, 0.737255, 1 )
+light_energy = 2.468
+light_indirect_energy = 1.705
+light_specular = 2.702
+light_bake_mode = 0
+shadow_enabled = true
+omni_range = 5.42914
+omni_attenuation = 2.07053
+
+[node name="campfire_fireflies" type="Particles" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 4.75136, 0 )
+process_material = SubResource( 22 )
+draw_pass_1 = SubResource( 23 )
