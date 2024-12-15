@@ -7,9 +7,10 @@ signal day_has_passed
 
 const ID = "LonelyLoner"
 onready var real_time = {"hour": 0, "minute": 0, "second": 0}
-onready var ingame_time = {"hour": 12, "minute": 30, "second": 0}
+onready var ingame_time = {"hour": 21, "minute": 30, "second": 0}
 
 onready var worldenv:WorldEnvironment = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
+onready var main_menu_worldenv:WorldEnvironment = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
 onready var main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
 
 var LL_fireflies = preload("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
@@ -23,7 +24,8 @@ var lh_timer:Timer
 var mode = "IngameTime"
 var check_lh = false
 var ingame_second_length = 0.0000000001
-var fireflies_added = false
+var fireflies_bootstrapped = false
+var worldenv_bootstrapped = false
 
 func _ready():
 	print(ID + " has loaded!")
@@ -41,42 +43,51 @@ func _startup():
 			create_timer(in_game_sec_timer, ingame_second_length, "_in_game_time_has_passed")
 
 func _cleanup():
+	main_zone.disconnect("tree_exiting", self, "_cleanup")
+	worldenv.disconnect("tree_exiting", self, "_cleanup")
+	worldenv = null
 	main_zone.remove_child(LL_fireflies)
 	main_zone = null
-	fireflies_added = false
+	fireflies_bootstrapped = false
+	worldenv_bootstrapped = false
 
 func _node_scanner():
-	if worldenv != null:
+	if worldenv != null && is_instance_valid(worldenv) == true && worldenv_bootstrapped == false:
+		worldenv_bootstrapped = true
 		worldenv.connect("tree_exiting", self, "_cleanup")
-	if worldenv != null:
-		_set_color_by_time()
+	if worldenv != null && is_instance_valid(worldenv) == true:
+		_set_color_by_time(worldenv)
+	if main_menu_worldenv != null && is_instance_valid(main_menu_worldenv) == true:
+		_set_color_by_time(main_menu_worldenv)
 	#if is_instance_valid(fireflies) == false:
 	#	fireflies = load("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
-	if main_zone != null && fireflies_added == false:
+	if main_zone != null && is_instance_valid(main_zone) == true && fireflies_bootstrapped == false:
 		#print("Tried to add fireflies")
+		fireflies_bootstrapped = true
 		main_zone.add_child(LL_fireflies)
 		main_zone.connect("tree_exiting", self, "_cleanup")
 	else:
 		worldenv = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
+		main_menu_worldenv = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
 		main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
 
 func _physics_process(delta):
 	_node_scanner()
-	print(ingame_time)
+	print(check_time())
 
-func _set_color_by_time():
+func _set_color_by_time(env):
 	var time = check_time()
 	match time["hour"]:
 		0, 1, 2, 3, 4, 20, 21, 22, 23:
-			worldenv.des_color = Color("#14253e")
+			env.des_color = Color("#14253e")
 		5, 6, 7:
-			worldenv.des_color = Color("#ffd6e7")
+			env.des_color = Color("#ffd6e7")
 		17, 18, 19:
-			worldenv.des_color = Color ("#ffa370")
+			env.des_color = Color ("#ffa370")
 		8, 9, 10, 11, 12, 13, 14, 15, 16:
-			worldenv.des_color = Color("#d5eeff")
+			env.des_color = Color("#d5eeff")
 		_:
-			worldenv.des_color = Color("d5eeff")
+			env.des_color = Color("d5eeff")
 			print(str(self) + ": WHERE ARE YOU?!?! (could not set time by hour because hour is either overflowed or doesn't exist)")
 
 func create_timer(timer, wait_by, function):

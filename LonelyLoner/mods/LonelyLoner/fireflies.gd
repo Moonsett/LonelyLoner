@@ -2,6 +2,8 @@ extends Spatial
 
 onready var LonelyLoner = get_node_or_null("/root/LonelyLoner")
 onready var time = LonelyLoner.check_time()
+var current_state = null
+var new_state = null
 
 func _load():
 	match time["hour"]:
@@ -11,25 +13,31 @@ func _load():
 			visible = false
 		17, 18, 19:
 			visible = true
-		5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16:
+		8, 9, 10, 11, 12, 13, 14, 15, 16:
 			visible = false
 
 func _set_visibility_by_time():
-	time = LonelyLoner.check_time()
+	var time = LonelyLoner.check_time()
+
 	match time["hour"]:
-		0, 1, 2, 3, 4, 20, 21, 22, 23:
-			$Fading.play("FadeIn")
-			if visible == false: visible = true
-		5, 6, 7:
-			$Fading.play("FadeOut")
-		17, 18, 19:
-			$Fading.play("FadeIn")
-			if visible == false: visible = true
+		17, 18, 19, 20, 21, 22, 23, 24, 0, 1, 2, 3, 4:
+			new_state = "fade_in"
 		5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16:
-			$Fading.play("FadeOut")
+			new_state = "fade_out"
 		_:
-			visible = false
-			print(str(self) + ": WHERE ARE YOU?!?! (could not set visibility by hour because hour is either overflowed or doesn't exist)")
+			print("Failed to get hour")
+
+	if new_state != current_state:
+		current_state = new_state
+		match current_state:
+			"fade_in":
+				$Fading.play("FadeIn")
+				if not visible:
+					visible = true
+			"fade_out":
+				$Fading.play("FadeOut")
+			"hidden":
+				visible = false
 
 func _ready():
 	_load()
