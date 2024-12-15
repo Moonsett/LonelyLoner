@@ -33,13 +33,13 @@ size = Vector2( 0.02, 0.02 )
 
 [node name="campfire_light" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97414, 0 )
-light_color = Color( 0.968627, 0.803922, 0.737255, 1 )
-light_energy = 2.468
+light_color = Color( 0.792157, 0.537255, 0.435294, 1 )
+light_energy = 2.028
 light_indirect_energy = 1.705
 light_specular = 2.702
 light_bake_mode = 0
 shadow_enabled = true
-omni_range = 5.42914
+omni_range = 6.46706
 omni_attenuation = 2.07053
 
 [node name="campfire_fireflies" type="Particles" parent="."]
