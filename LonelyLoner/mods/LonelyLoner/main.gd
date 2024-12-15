@@ -12,6 +12,7 @@ onready var ingame_time = {"hour": 21, "minute": 30, "second": 0}
 onready var worldenv:WorldEnvironment = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
 onready var main_menu_worldenv:WorldEnvironment = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
 onready var main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
+onready var campfire = get_node_or_null("/root/world/Viewport/main/entities/campfire")
 
 var LL_fireflies = preload("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
 var LL_campfire = preload("res://mods/LonelyLoner/Assets/Scenes/campfire.tscn").instance()
@@ -50,6 +51,13 @@ func _cleanup():
 	main_zone = null
 	fireflies_bootstrapped = false
 	worldenv_bootstrapped = false
+	if is_instance_valid(campfire):
+		_cleanup_campfire()
+
+func _cleanup_campfire():
+	campfire.disconnect("tree_exiting", self, "_cleanup")
+	campfire.remove_child(LL_campfire)
+	campfire = null
 
 func _node_scanner():
 	if worldenv != null && is_instance_valid(worldenv) == true && worldenv_bootstrapped == false:
@@ -59,8 +67,9 @@ func _node_scanner():
 		_set_color_by_time(worldenv)
 	if main_menu_worldenv != null && is_instance_valid(main_menu_worldenv) == true:
 		_set_color_by_time(main_menu_worldenv)
-	#if is_instance_valid(fireflies) == false:
-	#	fireflies = load("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
+	if campfire != null && is_instance_valid(campfire) == true:
+		campfire.add_child(LL_campfire)
+		campfire.connect("tree_exiting", self, "_cleanup")
 	if main_zone != null && is_instance_valid(main_zone) == true && fireflies_bootstrapped == false:
 		#print("Tried to add fireflies")
 		fireflies_bootstrapped = true
@@ -70,6 +79,7 @@ func _node_scanner():
 		worldenv = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
 		main_menu_worldenv = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
 		main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
+		campfire = get_node_or_null("/root/world/Viewport/main/entities/campfire")
 
 func _physics_process(delta):
 	_node_scanner()
