@@ -18,6 +18,7 @@ var LL_campfire = preload("res://mods/LonelyLoner/Assets/Scenes/campfire.tscn").
 
 var des_color = null
 var check_time_timer:Timer
+var set_color_timer:Timer
 var sec_timer:Timer
 var in_game_min_timer:Timer
 var irl_second_timer:Timer
@@ -25,7 +26,7 @@ var irl_min_timer:Timer
 var irl_hour_timer:Timer
 var irl_day_timer:Timer
 var lh_timer:Timer
-var mode = "RealTime"
+var mode = "IngameTime"
 var check_lh = false
 var ingame_minute_length = 0.1
 var LL_fireflies_loaded = false
@@ -49,75 +50,68 @@ func _startup():
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 		"IngameTime":
 			create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
+			create_timer(set_color_timer, ingame_minute_length, "_set_color_by_time")
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 			create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
 
 func _emit_second():
-	print(ID + ": second has emitted")
 	emit_signal("second_has_passed")
 
 func _emit_minute():
-	print(ID + ": minute has emitted")
 	emit_signal("minute_has_passed")
 
 func _emit_hour():
-	print(ID + ": hour has emitted")
 	emit_signal("hour_has_passed")
 
 func _emit_day():
-	print(ID + ": day has emitted")
 	emit_signal("day_has_passed")
 
 func _cleanup():
 	if is_instance_valid(worldenv):
-		print(ID + ": Unloading worldenv" + str(worldenv))
+		print(ID + ": Unloading " + str(worldenv))
 		self.disconnect("hour_has_passed", self, "_set_color_by_time")
 		worldenv.disconnect("tree_exiting", self, "_cleanup")
 		worldenv = null
 		LL_worldenv_loaded = false
 	if is_instance_valid(main_zone):
+		print(ID + ": Unloading " + str(main_zone))
 		main_zone.disconnect("tree_exiting", self, "_cleanup")
 		main_zone.remove_child(LL_fireflies)
 		main_zone = null
 		LL_fireflies_loaded = false
 	if is_instance_valid(campfire):
-		print(ID + ": Campfire was valid, unloading")
+		print(ID + ": Unloading " + str(campfire))
 		campfire.disconnect("tree_exiting", self, "_cleanup")
 		campfire.remove_child(LL_campfire)
 		campfire = null
 		LL_campfire_loaded = false
-		print(ID + ": Unloaded campfire")
 
 func _node_scanner(node: Node):
 	if node.get_path() == "/root/world/Viewport/main/map/main_map/WorldEnvironment" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment":
 		self.connect("hour_has_passed", self, "_set_color_by_time")
 		node.connect("tree_exiting", self, "_cleanup")
-		worldenv = get_node(node.get_path())
+		worldenv = node
 		LL_worldenv_loaded = true
-		_set_color_by_time()
 		print(ID + ": Correctly found worldenv: " + str(node))
+		_set_color_by_time()
 	if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "root/world/Viewport/main/map/main_map/zones/main_zone":
 		node.add_child(LL_fireflies)
 		node.connect("tree_exiting", self, "_cleanup")
-		main_zone = get_node(node.get_path())
+		main_zone = node
 		LL_fireflies_loaded = true
 	if node.get_path() == "/root/world/Viewport/main/entities/campfire":
 		print(ID + ": Campfire was found, loading LL scene on top of it")
 		node.add_child(LL_campfire)
 		node.connect("tree_exiting", self, "_cleanup")
-		campfire = get_node(node.get_path())
+		campfire = node
 		LL_campfire_loaded = true
 		print(ID + ": Loaded LL_campfire overtop of campfire")
 
 func _physics_process(delta):
 	pass
-	#if is_instance_valid(worldenv):
-	#	_set_color_by_time(worldenv)
 
 func _set_color_by_time():
-	print(ID + ": set_color_by_time has ran")
 	if is_instance_valid(worldenv):
-		print(ID + ": worldenv instance was valid")
 		var time = check_time()
 		match time["hour"]:
 			0, 1, 2, 3, 4, 20, 21, 22, 23, 24:
