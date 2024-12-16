@@ -20,8 +20,12 @@ var des_color = null
 var check_time_timer:Timer
 var sec_timer:Timer
 var in_game_min_timer:Timer
+var irl_second_timer:Timer
+var irl_min_timer:Timer
+var irl_hour_timer:Timer
+var irl_day_timer:Timer
 var lh_timer:Timer
-var mode = "IngameTime"
+var mode = "RealTime"
 var check_lh = false
 var ingame_minute_length = 0.1
 var LL_fireflies_loaded = false
@@ -38,11 +42,31 @@ func _startup():
 		"RealTime":
 			check_time()
 			create_timer(check_time_timer, 60, "check_time") # Set the interval at which to poll irl time
+			create_timer(irl_second_timer, 1, "_emit_second")
+			create_timer(irl_min_timer, 60, "_emit_minute")
+			create_timer(irl_hour_timer, 3600, "_emit_hour")
+			create_timer(irl_day_timer, 86400, "_emit_day")
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 		"IngameTime":
 			create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 			create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
+
+func _emit_second():
+	print(ID + ": second has emitted")
+	emit_signal("second_has_passed")
+
+func _emit_minute():
+	print(ID + ": minute has emitted")
+	emit_signal("minute_has_passed")
+
+func _emit_hour():
+	print(ID + ": hour has emitted")
+	emit_signal("hour_has_passed")
+
+func _emit_day():
+	print(ID + ": day has emitted")
+	emit_signal("day_has_passed")
 
 func _cleanup():
 	if is_instance_valid(worldenv):
@@ -118,14 +142,14 @@ func create_timer(timer, wait_by, function):
 
 func _in_game_time_has_passed():
 	ingame_time["minute"] = ingame_time["minute"] + 1
-	emit_signal("minute_has_passed")
+	_emit_minute()
 	if ingame_time["minute"] >= 60:
 		ingame_time["minute"] = 0
 		ingame_time["hour"] = ingame_time["hour"] + 1
-		emit_signal("hour_has_passed")
+		_emit_hour()
 	if ingame_time["hour"] >= 24:
 		ingame_time = {"hour": 0, "minute": 0, "second": 0}
-		emit_signal("day_has_passed")
+		_emit_day()
 
 func check_time():
 	match mode:
