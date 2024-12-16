@@ -9,95 +9,104 @@ const ID = "LonelyLoner"
 onready var real_time = {"hour": 0, "minute": 0, "second": 0}
 onready var ingame_time = {"hour": 21, "minute": 30, "second": 0}
 
-onready var worldenv:WorldEnvironment = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
-onready var main_menu_worldenv:WorldEnvironment = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
-onready var main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
-onready var campfire = get_node_or_null("/root/world/Viewport/main/entities/campfire")
+onready var worldenv:WorldEnvironment
+onready var main_zone
+onready var campfire
 
 var LL_fireflies = preload("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
 var LL_campfire = preload("res://mods/LonelyLoner/Assets/Scenes/campfire.tscn").instance()
 
 var des_color = null
-var min_timer:Timer
+var check_time_timer:Timer
 var sec_timer:Timer
 var in_game_min_timer:Timer
 var lh_timer:Timer
 var mode = "IngameTime"
 var check_lh = false
-var ingame_minute_length = 5
-var fireflies_bootstrapped = false
-var worldenv_bootstrapped = false
+var ingame_minute_length = 0.1
+var LL_fireflies_loaded = false
+var LL_worldenv_loaded = false
+var LL_campfire_loaded = false
 
 func _ready():
 	print(ID + " has loaded!")
+	get_tree().connect("node_added", self, "_node_scanner")
 	_startup()
 
 func _startup():
-	check_time()
 	match mode:
 		"RealTime":
-			create_timer(min_timer, 60, "check_time") # Set the interval at which to poll irl time
+			check_time()
+			create_timer(check_time_timer, 60, "check_time") # Set the interval at which to poll irl time
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 		"IngameTime":
-			create_timer(min_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
+			create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
 			#create_timer(sec_timer, 1, "_poll_long_haul")
 			create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
 
 func _cleanup():
-	main_zone.disconnect("tree_exiting", self, "_cleanup")
-	worldenv.disconnect("tree_exiting", self, "_cleanup")
-	worldenv = null
-	main_zone.remove_child(LL_fireflies)
-	main_zone = null
-	fireflies_bootstrapped = false
-	worldenv_bootstrapped = false
+	if is_instance_valid(worldenv):
+		print(ID + ": Unloading worldenv" + str(worldenv))
+		self.disconnect("hour_has_passed", self, "_set_color_by_time")
+		worldenv.disconnect("tree_exiting", self, "_cleanup")
+		worldenv = null
+		LL_worldenv_loaded = false
+	if is_instance_valid(main_zone):
+		main_zone.disconnect("tree_exiting", self, "_cleanup")
+		main_zone.remove_child(LL_fireflies)
+		main_zone = null
+		LL_fireflies_loaded = false
 	if is_instance_valid(campfire):
-		_cleanup_campfire()
+		print(ID + ": Campfire was valid, unloading")
+		campfire.disconnect("tree_exiting", self, "_cleanup")
+		campfire.remove_child(LL_campfire)
+		campfire = null
+		LL_campfire_loaded = false
+		print(ID + ": Unloaded campfire")
 
-func _cleanup_campfire():
-	campfire.disconnect("tree_exiting", self, "_cleanup")
-	campfire.remove_child(LL_campfire)
-	campfire = null
-
-func _node_scanner():
-	if worldenv != null && is_instance_valid(worldenv) == true && worldenv_bootstrapped == false:
-		worldenv_bootstrapped = true
-		worldenv.connect("tree_exiting", self, "_cleanup")
-	if worldenv != null && is_instance_valid(worldenv) == true:
-		_set_color_by_time(worldenv)
-	if main_menu_worldenv != null && is_instance_valid(main_menu_worldenv) == true:
-		_set_color_by_time(main_menu_worldenv)
-	if campfire != null && is_instance_valid(campfire) == true:
-		campfire.add_child(LL_campfire)
-		campfire.connect("tree_exiting", self, "_cleanup")
-	if main_zone != null && is_instance_valid(main_zone) == true && fireflies_bootstrapped == false:
-		#print("Tried to add fireflies")
-		fireflies_bootstrapped = true
-		main_zone.add_child(LL_fireflies)
-		main_zone.connect("tree_exiting", self, "_cleanup")
-	else:
-		worldenv = get_node_or_null("/root/world/Viewport/main/map/main_map/WorldEnvironment")
-		main_menu_worldenv = get_node_or_null("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment")
-		main_zone = get_node_or_null("/root/world/Viewport/main/map/main_map/zones/main_zone")
-		campfire = get_node_or_null("/root/world/Viewport/main/entities/campfire")
+func _node_scanner(node: Node):
+	if node.get_path() == "/root/world/Viewport/main/map/main_map/WorldEnvironment" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment":
+		self.connect("hour_has_passed", self, "_set_color_by_time")
+		node.connect("tree_exiting", self, "_cleanup")
+		worldenv = get_node(node.get_path())
+		LL_worldenv_loaded = true
+		_set_color_by_time()
+		print(ID + ": Correctly found worldenv: " + str(node))
+	if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "root/world/Viewport/main/map/main_map/zones/main_zone":
+		node.add_child(LL_fireflies)
+		node.connect("tree_exiting", self, "_cleanup")
+		main_zone = get_node(node.get_path())
+		LL_fireflies_loaded = true
+	if node.get_path() == "/root/world/Viewport/main/entities/campfire":
+		print(ID + ": Campfire was found, loading LL scene on top of it")
+		node.add_child(LL_campfire)
+		node.connect("tree_exiting", self, "_cleanup")
+		campfire = get_node(node.get_path())
+		LL_campfire_loaded = true
+		print(ID + ": Loaded LL_campfire overtop of campfire")
 
 func _physics_process(delta):
-	_node_scanner()
+	pass
+	#if is_instance_valid(worldenv):
+	#	_set_color_by_time(worldenv)
 
-func _set_color_by_time(env):
-	var time = check_time()
-	match time["hour"]:
-		0, 1, 2, 3, 4, 20, 21, 22, 23:
-			env.des_color = Color("#14253e")
-		5, 6, 7:
-			env.des_color = Color("#ffd6e7")
-		17, 18, 19:
-			env.des_color = Color ("#ffa370")
-		8, 9, 10, 11, 12, 13, 14, 15, 16:
-			env.des_color = Color("#d5eeff")
-		_:
-			env.des_color = Color("d5eeff")
-			print(str(self) + ": WHERE ARE YOU?!?! (could not set time by hour because hour is either overflowed or doesn't exist)")
+func _set_color_by_time():
+	print(ID + ": set_color_by_time has ran")
+	if is_instance_valid(worldenv):
+		print(ID + ": worldenv instance was valid")
+		var time = check_time()
+		match time["hour"]:
+			0, 1, 2, 3, 4, 20, 21, 22, 23, 24:
+				worldenv.des_color = Color("#14253e")
+			5, 6, 7:
+				worldenv.des_color = Color("#ffd6e7")
+			17, 18, 19:
+				worldenv.des_color = Color ("#ffa370")
+			8, 9, 10, 11, 12, 13, 14, 15, 16:
+				worldenv.des_color = Color("#d5eeff")
+			_:
+				worldenv.des_color = Color("d5eeff")
+				print(ID + " error: " + str(time) + str(self) + ": WHERE ARE YOU?!?! (could not set time by hour because hour is either overflowed or doesn't exist)")
 
 func create_timer(timer, wait_by, function):
 	timer = Timer.new()
