@@ -24,6 +24,8 @@ func _set_visibility_by_time():
 			new_state = "fade_in"
 		5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16:
 			new_state = "fade_out"
+			if $Anim.has_animation("Spin"):
+				$Anim.stop()
 		_:
 			print("Failed to get hour")
 
@@ -31,11 +33,11 @@ func _set_visibility_by_time():
 		current_state = new_state
 		match current_state:
 			"fade_in":
-				$Fading.play("FadeIn")
+				$Anim.play("Show")
 				if not visible:
 					visible = true
 			"fade_out":
-				$Fading.play("FadeOut")
+				$Anim.play("Hide")
 			"hidden":
 				visible = false
 
@@ -44,5 +46,6 @@ func _ready():
 	LonelyLoner.connect("hour_has_passed", self, "_set_visibility_by_time")
 
 func _physics_process(delta):
-	pass
+	if $Anim.has_animation("Spin") && !$Anim.is_playing():
+		$Anim.play("Spin")
 	#_set_visibility_by_time()

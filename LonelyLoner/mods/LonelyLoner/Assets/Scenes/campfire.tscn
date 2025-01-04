@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://mods/LonelyLoner/fireflies.gd" type="Script" id=1]
+[ext_resource path="res://mods/LonelyLoner/world_items.gd" type="Script" id=1]
 [ext_resource path="res://mods/LonelyLoner/Assets/Textures/Particles/firefly.png" type="Texture" id=9]
 
 [sub_resource type="ParticlesMaterial" id=22]
@@ -30,48 +30,8 @@ albedo_texture = ExtResource( 9 )
 material = SubResource( 21 )
 size = Vector2( 0.02, 0.02 )
 
-[sub_resource type="Animation" id=24]
-resource_name = "FadeIn"
-length = 30.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("campfire_fireflies:amount")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("campfire_fireflies:emitting")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("campfire_fireflies:visible")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
 [sub_resource type="Animation" id=25]
-resource_name = "FadeOut"
+resource_name = "Hide"
 length = 30.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("campfire_fireflies:amount")
@@ -149,6 +109,46 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=24]
+resource_name = "Show"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("campfire_fireflies:amount")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("campfire_fireflies:emitting")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("campfire_fireflies:visible")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="LL_campfire" type="Spatial"]
 
 [node name="campfire_light" type="OmniLight" parent="."]
@@ -164,16 +164,15 @@ omni_attenuation = 2.07053
 
 [node name="campfire_fireflies" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 4.75136, 0 )
-visible = false
 emitting = false
 amount = 1
 process_material = SubResource( 22 )
 draw_pass_1 = SubResource( 23 )
 script = ExtResource( 1 )
 
-[node name="Fading" type="AnimationPlayer" parent="campfire_fireflies"]
+[node name="Anim" type="AnimationPlayer" parent="campfire_fireflies"]
 root_node = NodePath("../..")
-autoplay = "FadeIn"
-anims/FadeIn = SubResource( 24 )
-anims/FadeOut = SubResource( 25 )
+autoplay = "Show"
+anims/Hide = SubResource( 25 )
 anims/RESET = SubResource( 26 )
+anims/Show = SubResource( 24 )

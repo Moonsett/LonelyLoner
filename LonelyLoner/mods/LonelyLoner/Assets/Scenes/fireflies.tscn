@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://mods/LonelyLoner/fireflies.gd" type="Script" id=1]
+[ext_resource path="res://mods/LonelyLoner/world_items.gd" type="Script" id=1]
 [ext_resource path="res://mods/LonelyLoner/Assets/Textures/Particles/firefly.png" type="Texture" id=2]
 
 [sub_resource type="ParticlesMaterial" id=387]
@@ -28,1128 +28,8 @@ albedo_texture = ExtResource( 2 )
 material = SubResource( 386 )
 size = Vector2( 0.02, 0.02 )
 
-[sub_resource type="Animation" id=389]
-resource_name = "FadeIn"
-length = 30.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("fireflies2:amount")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("fireflies2:emitting")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("fireflies3:amount")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("fireflies3:emitting")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("fireflies4:amount")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("fireflies4:emitting")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("fireflies5:amount")
-tracks/6/interp = 0
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("fireflies5:emitting")
-tracks/7/interp = 0
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("fireflies6:amount")
-tracks/8/interp = 0
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("fireflies6:emitting")
-tracks/9/interp = 0
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("fireflies7:amount")
-tracks/10/interp = 0
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("fireflies7:emitting")
-tracks/11/interp = 0
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("fireflies8:amount")
-tracks/12/interp = 0
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("fireflies8:emitting")
-tracks/13/interp = 0
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("fireflies10:amount")
-tracks/14/interp = 0
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("fireflies10:emitting")
-tracks/15/interp = 0
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("fireflies11:amount")
-tracks/16/interp = 0
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("fireflies11:emitting")
-tracks/17/interp = 0
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/18/type = "value"
-tracks/18/path = NodePath("fireflies12:amount")
-tracks/18/interp = 0
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/19/type = "value"
-tracks/19/path = NodePath("fireflies12:emitting")
-tracks/19/interp = 0
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/20/type = "value"
-tracks/20/path = NodePath("fireflies13:amount")
-tracks/20/interp = 0
-tracks/20/loop_wrap = true
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/21/type = "value"
-tracks/21/path = NodePath("fireflies13:emitting")
-tracks/21/interp = 0
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/22/type = "value"
-tracks/22/path = NodePath("fireflies14:amount")
-tracks/22/interp = 0
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/23/type = "value"
-tracks/23/path = NodePath("fireflies14:emitting")
-tracks/23/interp = 0
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/24/type = "value"
-tracks/24/path = NodePath("fireflies15:amount")
-tracks/24/interp = 0
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/25/type = "value"
-tracks/25/path = NodePath("fireflies15:emitting")
-tracks/25/interp = 0
-tracks/25/loop_wrap = true
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/26/type = "value"
-tracks/26/path = NodePath("fireflies16:amount")
-tracks/26/interp = 0
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/27/type = "value"
-tracks/27/path = NodePath("fireflies16:emitting")
-tracks/27/interp = 0
-tracks/27/loop_wrap = true
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/28/type = "value"
-tracks/28/path = NodePath("fireflies17:amount")
-tracks/28/interp = 0
-tracks/28/loop_wrap = true
-tracks/28/imported = false
-tracks/28/enabled = true
-tracks/28/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/29/type = "value"
-tracks/29/path = NodePath("fireflies17:emitting")
-tracks/29/interp = 0
-tracks/29/loop_wrap = true
-tracks/29/imported = false
-tracks/29/enabled = true
-tracks/29/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/30/type = "value"
-tracks/30/path = NodePath("fireflies18:amount")
-tracks/30/interp = 0
-tracks/30/loop_wrap = true
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/31/type = "value"
-tracks/31/path = NodePath("fireflies18:emitting")
-tracks/31/interp = 0
-tracks/31/loop_wrap = true
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/32/type = "value"
-tracks/32/path = NodePath("fireflies19:amount")
-tracks/32/interp = 0
-tracks/32/loop_wrap = true
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/33/type = "value"
-tracks/33/path = NodePath("fireflies19:emitting")
-tracks/33/interp = 0
-tracks/33/loop_wrap = true
-tracks/33/imported = false
-tracks/33/enabled = true
-tracks/33/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/34/type = "value"
-tracks/34/path = NodePath("fireflies20:amount")
-tracks/34/interp = 0
-tracks/34/loop_wrap = true
-tracks/34/imported = false
-tracks/34/enabled = true
-tracks/34/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/35/type = "value"
-tracks/35/path = NodePath("fireflies20:emitting")
-tracks/35/interp = 0
-tracks/35/loop_wrap = true
-tracks/35/imported = false
-tracks/35/enabled = true
-tracks/35/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/36/type = "value"
-tracks/36/path = NodePath("fireflies21:amount")
-tracks/36/interp = 0
-tracks/36/loop_wrap = true
-tracks/36/imported = false
-tracks/36/enabled = true
-tracks/36/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/37/type = "value"
-tracks/37/path = NodePath("fireflies22:amount")
-tracks/37/interp = 0
-tracks/37/loop_wrap = true
-tracks/37/imported = false
-tracks/37/enabled = true
-tracks/37/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/38/type = "value"
-tracks/38/path = NodePath("fireflies22:emitting")
-tracks/38/interp = 0
-tracks/38/loop_wrap = true
-tracks/38/imported = false
-tracks/38/enabled = true
-tracks/38/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/39/type = "value"
-tracks/39/path = NodePath("fireflies21:emitting")
-tracks/39/interp = 0
-tracks/39/loop_wrap = true
-tracks/39/imported = false
-tracks/39/enabled = true
-tracks/39/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/40/type = "value"
-tracks/40/path = NodePath("fireflies23:amount")
-tracks/40/interp = 0
-tracks/40/loop_wrap = true
-tracks/40/imported = false
-tracks/40/enabled = true
-tracks/40/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/41/type = "value"
-tracks/41/path = NodePath("fireflies23:emitting")
-tracks/41/interp = 0
-tracks/41/loop_wrap = true
-tracks/41/imported = false
-tracks/41/enabled = true
-tracks/41/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/42/type = "value"
-tracks/42/path = NodePath("fireflies24:amount")
-tracks/42/interp = 0
-tracks/42/loop_wrap = true
-tracks/42/imported = false
-tracks/42/enabled = true
-tracks/42/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/43/type = "value"
-tracks/43/path = NodePath("fireflies24:emitting")
-tracks/43/interp = 0
-tracks/43/loop_wrap = true
-tracks/43/imported = false
-tracks/43/enabled = true
-tracks/43/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/44/type = "value"
-tracks/44/path = NodePath("fireflies25:amount")
-tracks/44/interp = 0
-tracks/44/loop_wrap = true
-tracks/44/imported = false
-tracks/44/enabled = true
-tracks/44/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/45/type = "value"
-tracks/45/path = NodePath("fireflies25:emitting")
-tracks/45/interp = 0
-tracks/45/loop_wrap = true
-tracks/45/imported = false
-tracks/45/enabled = true
-tracks/45/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/46/type = "value"
-tracks/46/path = NodePath("flylight:light_energy")
-tracks/46/interp = 1
-tracks/46/loop_wrap = true
-tracks/46/imported = false
-tracks/46/enabled = true
-tracks/46/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/47/type = "value"
-tracks/47/path = NodePath("flylight2:light_energy")
-tracks/47/interp = 1
-tracks/47/loop_wrap = true
-tracks/47/imported = false
-tracks/47/enabled = true
-tracks/47/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/48/type = "value"
-tracks/48/path = NodePath("flylight3:light_energy")
-tracks/48/interp = 1
-tracks/48/loop_wrap = true
-tracks/48/imported = false
-tracks/48/enabled = true
-tracks/48/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/49/type = "value"
-tracks/49/path = NodePath("flylight4:light_energy")
-tracks/49/interp = 1
-tracks/49/loop_wrap = true
-tracks/49/imported = false
-tracks/49/enabled = true
-tracks/49/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/50/type = "value"
-tracks/50/path = NodePath("flylight5:light_energy")
-tracks/50/interp = 1
-tracks/50/loop_wrap = true
-tracks/50/imported = false
-tracks/50/enabled = true
-tracks/50/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/51/type = "value"
-tracks/51/path = NodePath("flylight6:light_energy")
-tracks/51/interp = 1
-tracks/51/loop_wrap = true
-tracks/51/imported = false
-tracks/51/enabled = true
-tracks/51/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/52/type = "value"
-tracks/52/path = NodePath("flylight7:light_energy")
-tracks/52/interp = 1
-tracks/52/loop_wrap = true
-tracks/52/imported = false
-tracks/52/enabled = true
-tracks/52/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/53/type = "value"
-tracks/53/path = NodePath("flylight8:light_energy")
-tracks/53/interp = 1
-tracks/53/loop_wrap = true
-tracks/53/imported = false
-tracks/53/enabled = true
-tracks/53/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/54/type = "value"
-tracks/54/path = NodePath("flylight9:light_energy")
-tracks/54/interp = 1
-tracks/54/loop_wrap = true
-tracks/54/imported = false
-tracks/54/enabled = true
-tracks/54/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/55/type = "value"
-tracks/55/path = NodePath("flylight10:light_energy")
-tracks/55/interp = 1
-tracks/55/loop_wrap = true
-tracks/55/imported = false
-tracks/55/enabled = true
-tracks/55/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/56/type = "value"
-tracks/56/path = NodePath("flylight11:light_energy")
-tracks/56/interp = 1
-tracks/56/loop_wrap = true
-tracks/56/imported = false
-tracks/56/enabled = true
-tracks/56/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/57/type = "value"
-tracks/57/path = NodePath("flylight12:light_energy")
-tracks/57/interp = 1
-tracks/57/loop_wrap = true
-tracks/57/imported = false
-tracks/57/enabled = true
-tracks/57/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/58/type = "value"
-tracks/58/path = NodePath("flylight13:light_energy")
-tracks/58/interp = 1
-tracks/58/loop_wrap = true
-tracks/58/imported = false
-tracks/58/enabled = true
-tracks/58/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/59/type = "value"
-tracks/59/path = NodePath("flylight14:light_energy")
-tracks/59/interp = 1
-tracks/59/loop_wrap = true
-tracks/59/imported = false
-tracks/59/enabled = true
-tracks/59/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/60/type = "value"
-tracks/60/path = NodePath("flylight15:light_energy")
-tracks/60/interp = 1
-tracks/60/loop_wrap = true
-tracks/60/imported = false
-tracks/60/enabled = true
-tracks/60/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/61/type = "value"
-tracks/61/path = NodePath("flylight16:light_energy")
-tracks/61/interp = 1
-tracks/61/loop_wrap = true
-tracks/61/imported = false
-tracks/61/enabled = true
-tracks/61/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/62/type = "value"
-tracks/62/path = NodePath("flylight17:light_energy")
-tracks/62/interp = 1
-tracks/62/loop_wrap = true
-tracks/62/imported = false
-tracks/62/enabled = true
-tracks/62/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/63/type = "value"
-tracks/63/path = NodePath("flylight18:light_energy")
-tracks/63/interp = 1
-tracks/63/loop_wrap = true
-tracks/63/imported = false
-tracks/63/enabled = true
-tracks/63/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/64/type = "value"
-tracks/64/path = NodePath("flylight19:light_energy")
-tracks/64/interp = 1
-tracks/64/loop_wrap = true
-tracks/64/imported = false
-tracks/64/enabled = true
-tracks/64/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/65/type = "value"
-tracks/65/path = NodePath("flylight20:light_energy")
-tracks/65/interp = 1
-tracks/65/loop_wrap = true
-tracks/65/imported = false
-tracks/65/enabled = true
-tracks/65/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.028 ]
-}
-tracks/66/type = "value"
-tracks/66/path = NodePath("flylight21:light_energy")
-tracks/66/interp = 1
-tracks/66/loop_wrap = true
-tracks/66/imported = false
-tracks/66/enabled = true
-tracks/66/keys = {
-"times": PoolRealArray( 0, 28.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.028, 0.0 ]
-}
-tracks/67/type = "value"
-tracks/67/path = NodePath("fireflies9:amount")
-tracks/67/interp = 0
-tracks/67/loop_wrap = true
-tracks/67/imported = false
-tracks/67/enabled = true
-tracks/67/keys = {
-"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 4, 6, 8 ]
-}
-tracks/68/type = "value"
-tracks/68/path = NodePath("fireflies9:emitting")
-tracks/68/interp = 0
-tracks/68/loop_wrap = true
-tracks/68/imported = false
-tracks/68/enabled = true
-tracks/68/keys = {
-"times": PoolRealArray( 0, 1.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/69/type = "value"
-tracks/69/path = NodePath("fireflies2:visible")
-tracks/69/interp = 0
-tracks/69/loop_wrap = true
-tracks/69/imported = false
-tracks/69/enabled = true
-tracks/69/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/70/type = "value"
-tracks/70/path = NodePath("fireflies3:visible")
-tracks/70/interp = 0
-tracks/70/loop_wrap = true
-tracks/70/imported = false
-tracks/70/enabled = true
-tracks/70/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/71/type = "value"
-tracks/71/path = NodePath("fireflies4:visible")
-tracks/71/interp = 0
-tracks/71/loop_wrap = true
-tracks/71/imported = false
-tracks/71/enabled = true
-tracks/71/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/72/type = "value"
-tracks/72/path = NodePath("fireflies5:visible")
-tracks/72/interp = 0
-tracks/72/loop_wrap = true
-tracks/72/imported = false
-tracks/72/enabled = true
-tracks/72/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/73/type = "value"
-tracks/73/path = NodePath("fireflies6:visible")
-tracks/73/interp = 0
-tracks/73/loop_wrap = true
-tracks/73/imported = false
-tracks/73/enabled = true
-tracks/73/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/74/type = "value"
-tracks/74/path = NodePath("fireflies7:visible")
-tracks/74/interp = 0
-tracks/74/loop_wrap = true
-tracks/74/imported = false
-tracks/74/enabled = true
-tracks/74/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/75/type = "value"
-tracks/75/path = NodePath("fireflies8:visible")
-tracks/75/interp = 0
-tracks/75/loop_wrap = true
-tracks/75/imported = false
-tracks/75/enabled = true
-tracks/75/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/76/type = "value"
-tracks/76/path = NodePath("fireflies9:visible")
-tracks/76/interp = 0
-tracks/76/loop_wrap = true
-tracks/76/imported = false
-tracks/76/enabled = true
-tracks/76/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/77/type = "value"
-tracks/77/path = NodePath("fireflies10:visible")
-tracks/77/interp = 0
-tracks/77/loop_wrap = true
-tracks/77/imported = false
-tracks/77/enabled = true
-tracks/77/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/78/type = "value"
-tracks/78/path = NodePath("fireflies11:visible")
-tracks/78/interp = 0
-tracks/78/loop_wrap = true
-tracks/78/imported = false
-tracks/78/enabled = true
-tracks/78/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/79/type = "value"
-tracks/79/path = NodePath("fireflies12:visible")
-tracks/79/interp = 0
-tracks/79/loop_wrap = true
-tracks/79/imported = false
-tracks/79/enabled = true
-tracks/79/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/80/type = "value"
-tracks/80/path = NodePath("fireflies13:visible")
-tracks/80/interp = 0
-tracks/80/loop_wrap = true
-tracks/80/imported = false
-tracks/80/enabled = true
-tracks/80/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/81/type = "value"
-tracks/81/path = NodePath("fireflies14:visible")
-tracks/81/interp = 0
-tracks/81/loop_wrap = true
-tracks/81/imported = false
-tracks/81/enabled = true
-tracks/81/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/82/type = "value"
-tracks/82/path = NodePath("fireflies15:visible")
-tracks/82/interp = 0
-tracks/82/loop_wrap = true
-tracks/82/imported = false
-tracks/82/enabled = true
-tracks/82/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/83/type = "value"
-tracks/83/path = NodePath("fireflies16:visible")
-tracks/83/interp = 0
-tracks/83/loop_wrap = true
-tracks/83/imported = false
-tracks/83/enabled = true
-tracks/83/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/84/type = "value"
-tracks/84/path = NodePath("fireflies17:visible")
-tracks/84/interp = 0
-tracks/84/loop_wrap = true
-tracks/84/imported = false
-tracks/84/enabled = true
-tracks/84/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/85/type = "value"
-tracks/85/path = NodePath("fireflies18:visible")
-tracks/85/interp = 0
-tracks/85/loop_wrap = true
-tracks/85/imported = false
-tracks/85/enabled = true
-tracks/85/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/86/type = "value"
-tracks/86/path = NodePath("fireflies19:visible")
-tracks/86/interp = 0
-tracks/86/loop_wrap = true
-tracks/86/imported = false
-tracks/86/enabled = true
-tracks/86/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/87/type = "value"
-tracks/87/path = NodePath("fireflies20:visible")
-tracks/87/interp = 0
-tracks/87/loop_wrap = true
-tracks/87/imported = false
-tracks/87/enabled = true
-tracks/87/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/88/type = "value"
-tracks/88/path = NodePath("fireflies21:visible")
-tracks/88/interp = 0
-tracks/88/loop_wrap = true
-tracks/88/imported = false
-tracks/88/enabled = true
-tracks/88/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/89/type = "value"
-tracks/89/path = NodePath("fireflies22:visible")
-tracks/89/interp = 0
-tracks/89/loop_wrap = true
-tracks/89/imported = false
-tracks/89/enabled = true
-tracks/89/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/90/type = "value"
-tracks/90/path = NodePath("fireflies23:visible")
-tracks/90/interp = 0
-tracks/90/loop_wrap = true
-tracks/90/imported = false
-tracks/90/enabled = true
-tracks/90/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/91/type = "value"
-tracks/91/path = NodePath("fireflies24:visible")
-tracks/91/interp = 0
-tracks/91/loop_wrap = true
-tracks/91/imported = false
-tracks/91/enabled = true
-tracks/91/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/92/type = "value"
-tracks/92/path = NodePath("fireflies25:visible")
-tracks/92/interp = 0
-tracks/92/loop_wrap = true
-tracks/92/imported = false
-tracks/92/enabled = true
-tracks/92/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
 [sub_resource type="Animation" id=391]
-resource_name = "FadeOut"
+resource_name = "Hide"
 length = 30.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("fireflies2:amount")
@@ -2307,123 +1187,1244 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=389]
+resource_name = "Show"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("fireflies2:amount")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fireflies2:emitting")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fireflies3:amount")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("fireflies3:emitting")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("fireflies4:amount")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("fireflies4:emitting")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("fireflies5:amount")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("fireflies5:emitting")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("fireflies6:amount")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("fireflies6:emitting")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("fireflies7:amount")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("fireflies7:emitting")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("fireflies8:amount")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("fireflies8:emitting")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("fireflies10:amount")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("fireflies10:emitting")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("fireflies11:amount")
+tracks/16/interp = 0
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("fireflies11:emitting")
+tracks/17/interp = 0
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("fireflies12:amount")
+tracks/18/interp = 0
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("fireflies12:emitting")
+tracks/19/interp = 0
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("fireflies13:amount")
+tracks/20/interp = 0
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("fireflies13:emitting")
+tracks/21/interp = 0
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("fireflies14:amount")
+tracks/22/interp = 0
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("fireflies14:emitting")
+tracks/23/interp = 0
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("fireflies15:amount")
+tracks/24/interp = 0
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("fireflies15:emitting")
+tracks/25/interp = 0
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("fireflies16:amount")
+tracks/26/interp = 0
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("fireflies16:emitting")
+tracks/27/interp = 0
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("fireflies17:amount")
+tracks/28/interp = 0
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("fireflies17:emitting")
+tracks/29/interp = 0
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("fireflies18:amount")
+tracks/30/interp = 0
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("fireflies18:emitting")
+tracks/31/interp = 0
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("fireflies19:amount")
+tracks/32/interp = 0
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("fireflies19:emitting")
+tracks/33/interp = 0
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("fireflies20:amount")
+tracks/34/interp = 0
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("fireflies20:emitting")
+tracks/35/interp = 0
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("fireflies21:amount")
+tracks/36/interp = 0
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("fireflies22:amount")
+tracks/37/interp = 0
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("fireflies22:emitting")
+tracks/38/interp = 0
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("fireflies21:emitting")
+tracks/39/interp = 0
+tracks/39/loop_wrap = true
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("fireflies23:amount")
+tracks/40/interp = 0
+tracks/40/loop_wrap = true
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("fireflies23:emitting")
+tracks/41/interp = 0
+tracks/41/loop_wrap = true
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("fireflies24:amount")
+tracks/42/interp = 0
+tracks/42/loop_wrap = true
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("fireflies24:emitting")
+tracks/43/interp = 0
+tracks/43/loop_wrap = true
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("fireflies25:amount")
+tracks/44/interp = 0
+tracks/44/loop_wrap = true
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("fireflies25:emitting")
+tracks/45/interp = 0
+tracks/45/loop_wrap = true
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("flylight:light_energy")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("flylight2:light_energy")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("flylight3:light_energy")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("flylight4:light_energy")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("flylight5:light_energy")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/51/type = "value"
+tracks/51/path = NodePath("flylight6:light_energy")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/52/type = "value"
+tracks/52/path = NodePath("flylight7:light_energy")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("flylight8:light_energy")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("flylight9:light_energy")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("flylight10:light_energy")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("flylight11:light_energy")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/57/type = "value"
+tracks/57/path = NodePath("flylight12:light_energy")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/58/type = "value"
+tracks/58/path = NodePath("flylight13:light_energy")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/59/type = "value"
+tracks/59/path = NodePath("flylight14:light_energy")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/60/type = "value"
+tracks/60/path = NodePath("flylight15:light_energy")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/imported = false
+tracks/60/enabled = true
+tracks/60/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/61/type = "value"
+tracks/61/path = NodePath("flylight16:light_energy")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/imported = false
+tracks/61/enabled = true
+tracks/61/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/62/type = "value"
+tracks/62/path = NodePath("flylight17:light_energy")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/imported = false
+tracks/62/enabled = true
+tracks/62/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/63/type = "value"
+tracks/63/path = NodePath("flylight18:light_energy")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/imported = false
+tracks/63/enabled = true
+tracks/63/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/64/type = "value"
+tracks/64/path = NodePath("flylight19:light_energy")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/imported = false
+tracks/64/enabled = true
+tracks/64/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/65/type = "value"
+tracks/65/path = NodePath("flylight20:light_energy")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/imported = false
+tracks/65/enabled = true
+tracks/65/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.028 ]
+}
+tracks/66/type = "value"
+tracks/66/path = NodePath("flylight21:light_energy")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/imported = false
+tracks/66/enabled = true
+tracks/66/keys = {
+"times": PoolRealArray( 0, 28.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.028, 0.0 ]
+}
+tracks/67/type = "value"
+tracks/67/path = NodePath("fireflies9:amount")
+tracks/67/interp = 0
+tracks/67/loop_wrap = true
+tracks/67/imported = false
+tracks/67/enabled = true
+tracks/67/keys = {
+"times": PoolRealArray( 0, 7.3, 15, 21.7, 28.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 4, 6, 8 ]
+}
+tracks/68/type = "value"
+tracks/68/path = NodePath("fireflies9:emitting")
+tracks/68/interp = 0
+tracks/68/loop_wrap = true
+tracks/68/imported = false
+tracks/68/enabled = true
+tracks/68/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/69/type = "value"
+tracks/69/path = NodePath("fireflies2:visible")
+tracks/69/interp = 0
+tracks/69/loop_wrap = true
+tracks/69/imported = false
+tracks/69/enabled = true
+tracks/69/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/70/type = "value"
+tracks/70/path = NodePath("fireflies3:visible")
+tracks/70/interp = 0
+tracks/70/loop_wrap = true
+tracks/70/imported = false
+tracks/70/enabled = true
+tracks/70/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/71/type = "value"
+tracks/71/path = NodePath("fireflies4:visible")
+tracks/71/interp = 0
+tracks/71/loop_wrap = true
+tracks/71/imported = false
+tracks/71/enabled = true
+tracks/71/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/72/type = "value"
+tracks/72/path = NodePath("fireflies5:visible")
+tracks/72/interp = 0
+tracks/72/loop_wrap = true
+tracks/72/imported = false
+tracks/72/enabled = true
+tracks/72/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/73/type = "value"
+tracks/73/path = NodePath("fireflies6:visible")
+tracks/73/interp = 0
+tracks/73/loop_wrap = true
+tracks/73/imported = false
+tracks/73/enabled = true
+tracks/73/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/74/type = "value"
+tracks/74/path = NodePath("fireflies7:visible")
+tracks/74/interp = 0
+tracks/74/loop_wrap = true
+tracks/74/imported = false
+tracks/74/enabled = true
+tracks/74/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/75/type = "value"
+tracks/75/path = NodePath("fireflies8:visible")
+tracks/75/interp = 0
+tracks/75/loop_wrap = true
+tracks/75/imported = false
+tracks/75/enabled = true
+tracks/75/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/76/type = "value"
+tracks/76/path = NodePath("fireflies9:visible")
+tracks/76/interp = 0
+tracks/76/loop_wrap = true
+tracks/76/imported = false
+tracks/76/enabled = true
+tracks/76/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/77/type = "value"
+tracks/77/path = NodePath("fireflies10:visible")
+tracks/77/interp = 0
+tracks/77/loop_wrap = true
+tracks/77/imported = false
+tracks/77/enabled = true
+tracks/77/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/78/type = "value"
+tracks/78/path = NodePath("fireflies11:visible")
+tracks/78/interp = 0
+tracks/78/loop_wrap = true
+tracks/78/imported = false
+tracks/78/enabled = true
+tracks/78/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/79/type = "value"
+tracks/79/path = NodePath("fireflies12:visible")
+tracks/79/interp = 0
+tracks/79/loop_wrap = true
+tracks/79/imported = false
+tracks/79/enabled = true
+tracks/79/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/80/type = "value"
+tracks/80/path = NodePath("fireflies13:visible")
+tracks/80/interp = 0
+tracks/80/loop_wrap = true
+tracks/80/imported = false
+tracks/80/enabled = true
+tracks/80/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/81/type = "value"
+tracks/81/path = NodePath("fireflies14:visible")
+tracks/81/interp = 0
+tracks/81/loop_wrap = true
+tracks/81/imported = false
+tracks/81/enabled = true
+tracks/81/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/82/type = "value"
+tracks/82/path = NodePath("fireflies15:visible")
+tracks/82/interp = 0
+tracks/82/loop_wrap = true
+tracks/82/imported = false
+tracks/82/enabled = true
+tracks/82/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/83/type = "value"
+tracks/83/path = NodePath("fireflies16:visible")
+tracks/83/interp = 0
+tracks/83/loop_wrap = true
+tracks/83/imported = false
+tracks/83/enabled = true
+tracks/83/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/84/type = "value"
+tracks/84/path = NodePath("fireflies17:visible")
+tracks/84/interp = 0
+tracks/84/loop_wrap = true
+tracks/84/imported = false
+tracks/84/enabled = true
+tracks/84/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/85/type = "value"
+tracks/85/path = NodePath("fireflies18:visible")
+tracks/85/interp = 0
+tracks/85/loop_wrap = true
+tracks/85/imported = false
+tracks/85/enabled = true
+tracks/85/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/86/type = "value"
+tracks/86/path = NodePath("fireflies19:visible")
+tracks/86/interp = 0
+tracks/86/loop_wrap = true
+tracks/86/imported = false
+tracks/86/enabled = true
+tracks/86/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/87/type = "value"
+tracks/87/path = NodePath("fireflies20:visible")
+tracks/87/interp = 0
+tracks/87/loop_wrap = true
+tracks/87/imported = false
+tracks/87/enabled = true
+tracks/87/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/88/type = "value"
+tracks/88/path = NodePath("fireflies21:visible")
+tracks/88/interp = 0
+tracks/88/loop_wrap = true
+tracks/88/imported = false
+tracks/88/enabled = true
+tracks/88/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/89/type = "value"
+tracks/89/path = NodePath("fireflies22:visible")
+tracks/89/interp = 0
+tracks/89/loop_wrap = true
+tracks/89/imported = false
+tracks/89/enabled = true
+tracks/89/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/90/type = "value"
+tracks/90/path = NodePath("fireflies23:visible")
+tracks/90/interp = 0
+tracks/90/loop_wrap = true
+tracks/90/imported = false
+tracks/90/enabled = true
+tracks/90/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/91/type = "value"
+tracks/91/path = NodePath("fireflies24:visible")
+tracks/91/interp = 0
+tracks/91/loop_wrap = true
+tracks/91/imported = false
+tracks/91/enabled = true
+tracks/91/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/92/type = "value"
+tracks/92/path = NodePath("fireflies25:visible")
+tracks/92/interp = 0
+tracks/92/loop_wrap = true
+tracks/92/imported = false
+tracks/92/enabled = true
+tracks/92/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="LL_fireflies" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="fireflies2" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 89.2392, 4.99541, -30.2179 )
+visible = false
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies3" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 93.431, 4.99541, -28.1512 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies4" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 19.5769, 4.67695, -33.688 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies5" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 36.3987, 4.99541, -96.4059 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies6" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 15.3279, 4.99541, -95.2952 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies7" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 5.36663, 4.99541, -95.3379 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies8" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 11.7911, 4.99541, -104.299 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies9" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -51.0096, 9.71644, -74.7509 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies10" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -38.3964, 9.71644, -76.6519 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies11" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -46.9814, 9.71644, -63.3204 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies12" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -44.3196, 9.71644, -19.1459 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies13" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -52.8283, 9.71644, 12.4201 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies14" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -12.3879, 4.99541, 29.7181 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies15" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -7.67094, 4.99541, 38.3014 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies16" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -0.249786, 5.41239, -74.079 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.68187, -4, -4, 7.36375, 8, 8 )
 process_material = SubResource( 387 )
@@ -2431,8 +2432,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies17" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 52.0088, 5.33071, -36.5527 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2440,8 +2441,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies18" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 63.8767, 5.33071, -43.3865 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2449,8 +2450,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies19" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 54.0405, 4.95582, -65.5983 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2458,8 +2459,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies20" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -0.249786, 5.41239, -68.2416 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.68187, -4, -4, 7.36375, 8, 8 )
 process_material = SubResource( 387 )
@@ -2467,8 +2468,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies21" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 76.5966, 4.95582, -64.7647 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2476,8 +2477,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies22" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 116.446, 4.95582, -44.1533 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2485,8 +2486,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies23" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 104.375, 4.95582, -62.682 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2494,8 +2495,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies24" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 92.7688, 4.95582, -65.0478 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 visibility_aabb = AABB( -3.23469, -4.87048, -4.60175, 6.46939, 9.74096, 9.2035 )
 process_material = SubResource( 387 )
@@ -2503,8 +2504,8 @@ draw_pass_1 = SubResource( 388 )
 
 [node name="fireflies25" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, -72.7134, 14.5189, 55.3293 )
+visible = false
 emitting = false
-amount = 1
 lifetime = 0.59
 process_material = SubResource( 387 )
 draw_pass_1 = SubResource( 388 )
@@ -2512,7 +2513,7 @@ draw_pass_1 = SubResource( 388 )
 [node name="flylight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.8486, 5.66911, -29.7557 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2520,7 +2521,7 @@ light_bake_mode = 0
 [node name="flylight2" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 116.62, 5.66911, -44.8151 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2528,7 +2529,7 @@ light_bake_mode = 0
 [node name="flylight3" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.037, 5.66911, -62.9768 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2536,7 +2537,7 @@ light_bake_mode = 0
 [node name="flylight4" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 95.156, 5.66911, -65.3611 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2544,7 +2545,7 @@ light_bake_mode = 0
 [node name="flylight5" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 75.3362, 5.66911, -63.2821 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2552,7 +2553,7 @@ light_bake_mode = 0
 [node name="flylight6" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1162, 5.66911, -63.9098 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2560,7 +2561,7 @@ light_bake_mode = 0
 [node name="flylight7" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.2996, 5.66911, -42.1587 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2568,7 +2569,7 @@ light_bake_mode = 0
 [node name="flylight8" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.8621, 5.66911, -37.9208 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2576,7 +2577,7 @@ light_bake_mode = 0
 [node name="flylight9" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1598, 5.03955, -93.6682 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2584,7 +2585,7 @@ light_bake_mode = 0
 [node name="flylight10" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.09907, 5.03955, -95.712 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2592,7 +2593,7 @@ light_bake_mode = 0
 [node name="flylight11" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3867, 5.03955, -104.102 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2600,7 +2601,7 @@ light_bake_mode = 0
 [node name="flylight12" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9412, 5.03955, -97.5924 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2608,7 +2609,7 @@ light_bake_mode = 0
 [node name="flylight13" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.506, 9.52395, -77.8261 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2616,7 +2617,7 @@ light_bake_mode = 0
 [node name="flylight14" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -51.8011, 9.52395, -76.4564 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2624,7 +2625,7 @@ light_bake_mode = 0
 [node name="flylight15" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5955, 9.52395, -64.1295 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2632,7 +2633,7 @@ light_bake_mode = 0
 [node name="flylight16" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.7501, 9.52395, -18.9018 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2640,7 +2641,7 @@ light_bake_mode = 0
 [node name="flylight17" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4955, 9.52395, 12.1516 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2648,7 +2649,7 @@ light_bake_mode = 0
 [node name="flylight18" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0487, 4.04419, 29.4893 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2656,7 +2657,7 @@ light_bake_mode = 0
 [node name="flylight19" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -71.1601, 15.6345, 56.6049 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2664,7 +2665,7 @@ light_bake_mode = 0
 [node name="flylight20" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5025, 4.04419, 37.7585 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.0
+light_energy = 0.028
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
@@ -2672,13 +2673,13 @@ light_bake_mode = 0
 [node name="flylight21" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.4441, 4.74754, -33.5226 )
 light_color = Color( 0.968627, 0.992157, 0.686275, 1 )
-light_energy = 0.028
+light_energy = 0.0
 light_indirect_energy = 7.754
 light_specular = 16.0
 light_bake_mode = 0
 
-[node name="Fading" type="AnimationPlayer" parent="."]
-autoplay = "FadeIn"
-anims/FadeIn = SubResource( 389 )
-anims/FadeOut = SubResource( 391 )
+[node name="Anim" type="AnimationPlayer" parent="."]
+autoplay = "Show"
+anims/Hide = SubResource( 391 )
 anims/RESET = SubResource( 390 )
+anims/Show = SubResource( 389 )

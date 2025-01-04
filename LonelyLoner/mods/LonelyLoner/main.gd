@@ -15,6 +15,7 @@ onready var campfire
 
 var LL_fireflies = preload("res://mods/LonelyLoner/Assets/Scenes/fireflies.tscn").instance()
 var LL_campfire = preload("res://mods/LonelyLoner/Assets/Scenes/campfire.tscn").instance()
+var LL_lighthouse = preload("res://mods/LonelyLoner/Assets/Scenes/lighthouse.tscn").instance()
 
 var des_color = null
 var check_time_timer:Timer
@@ -32,6 +33,7 @@ var ingame_minute_length = 0.1
 var LL_fireflies_loaded = false
 var LL_worldenv_loaded = false
 var LL_campfire_loaded = false
+var LL_lighthouse_loaded = false
 
 func _ready():
 	print(ID + " has loaded!")
@@ -77,8 +79,10 @@ func _cleanup():
 		print(ID + ": Unloading " + str(main_zone))
 		main_zone.disconnect("tree_exiting", self, "_cleanup")
 		main_zone.remove_child(LL_fireflies)
+		main_zone.remove_child(LL_lighthouse)
 		main_zone = null
 		LL_fireflies_loaded = false
+		LL_lighthouse_loaded = false
 	_cleanup_campfire()
 
 func _cleanup_campfire():
@@ -97,11 +101,13 @@ func _node_scanner(node: Node):
 		LL_worldenv_loaded = true
 		print(ID + ": Correctly found worldenv: " + str(node))
 		_set_color_by_time()
-	if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "root/world/Viewport/main/map/main_map/zones/main_zone":
+	if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone":
 		node.add_child(LL_fireflies)
+		node.add_child(LL_lighthouse)
 		node.connect("tree_exiting", self, "_cleanup")
 		main_zone = node
 		LL_fireflies_loaded = true
+		LL_lighthouse_loaded = true
 	if node.get_path() == "/root/world/Viewport/main/entities/campfire":
 		print(ID + ": Campfire was found, loading LL scene on top of it")
 		node.add_child(LL_campfire)
