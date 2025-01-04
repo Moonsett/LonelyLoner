@@ -79,6 +79,9 @@ func _cleanup():
 		main_zone.remove_child(LL_fireflies)
 		main_zone = null
 		LL_fireflies_loaded = false
+	_cleanup_campfire()
+
+func _cleanup_campfire():
 	if is_instance_valid(campfire):
 		print(ID + ": Unloading " + str(campfire))
 		campfire.disconnect("tree_exiting", self, "_cleanup")
@@ -102,7 +105,7 @@ func _node_scanner(node: Node):
 	if node.get_path() == "/root/world/Viewport/main/entities/campfire":
 		print(ID + ": Campfire was found, loading LL scene on top of it")
 		node.add_child(LL_campfire)
-		node.connect("tree_exiting", self, "_cleanup")
+		node.connect("tree_exiting", self, "_cleanup_campfire")
 		campfire = node
 		LL_campfire_loaded = true
 		print(ID + ": Loaded LL_campfire overtop of campfire")

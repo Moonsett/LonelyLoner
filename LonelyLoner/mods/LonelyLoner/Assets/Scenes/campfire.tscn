@@ -99,12 +99,12 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("campfire_fireflies:visible")
-tracks/2/interp = 0
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 30 ),
+"times": PoolRealArray( 15.6 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -164,6 +164,8 @@ omni_attenuation = 2.07053
 
 [node name="campfire_fireflies" type="Particles" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.3, 0, 0, 0, 0.5, 0, 4.75136, 0 )
+visible = false
+emitting = false
 amount = 1
 process_material = SubResource( 22 )
 draw_pass_1 = SubResource( 23 )
