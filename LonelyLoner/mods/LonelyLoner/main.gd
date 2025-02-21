@@ -36,18 +36,20 @@ var LL_fireflies_loaded = false
 var LL_campfire_loaded = false
 var LL_lighthouse_loaded = false
 
-var LL_config_timeapi = true
-var LL_config_worldenv = true
-var LL_config_fireflies = true
-var LL_config_campfire = true
-var LL_config_lighthouse = true
+class LL_Config:
+	var timeapi: bool = true
+	var worldenv: bool = true
+	var fireflies: bool = true
+	var campfire: bool = true
+	var lighthouse: bool = true
 
 enum TimeMode {
 	INGAMETIME,
 	REALTIME,
 }
 
-onready var mode = TimeMode.REALTIME
+onready var mode = TimeMode.INGAMETIME
+onready var config = LL_Config.new()
 
 func _ready():
 	print(ID + " has loaded!")
@@ -55,7 +57,7 @@ func _ready():
 	_startup()
 
 func _startup():
-	if (LL_config_timeapi):
+	if (config.timeapi):
 		match mode:
 			TimeMode.REALTIME:
 				check_time()
@@ -85,7 +87,7 @@ func _emit_day():
 
 func _cleanup():
 	if is_instance_valid(worldenv):
-		if (LL_config_worldenv):
+		if (config.worldenv):
 			print(ID + ": Unloading " + str(worldenv))
 			self.disconnect("hour_has_passed", self, "_set_color_by_time")
 			LL_worldenv_loaded = false
@@ -94,10 +96,10 @@ func _cleanup():
 
 	if is_instance_valid(main_zone):
 		print(ID + ": Unloading " + str(main_zone))
-		if (LL_config_fireflies):
+		if (config.fireflies):
 			main_zone.remove_child(LL_fireflies)
 			LL_fireflies_loaded = false
-		if (LL_config_lighthouse):
+		if (config.lighthouse):
 			main_zone.remove_child(LL_lighthouse)
 			LL_lighthouse_loaded = false
 		main_zone.disconnect("tree_exiting", self, "_cleanup")
@@ -106,7 +108,7 @@ func _cleanup():
 
 func _cleanup_campfire():
 	if is_instance_valid(campfire):
-		if (LL_config_campfire):
+		if (config.campfire):
 			print(ID + ": Unloading " + str(campfire))
 			campfire.remove_child(LL_campfire)
 			LL_campfire_loaded = false
@@ -116,7 +118,7 @@ func _cleanup_campfire():
 func _node_scanner(node: Node):
 	match node.get_path():
 		NodePath("/root/world/Viewport/main/map/main_map/WorldEnvironment"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment"):
-			if (LL_config_worldenv):
+			if (config.worldenv):
 				self.connect("hour_has_passed", self, "_set_color_by_time")
 				LL_worldenv_loaded = true
 				print(ID + ": Correctly found worldenv: " + str(node))
@@ -124,16 +126,16 @@ func _node_scanner(node: Node):
 				node.connect("tree_exiting", self, "_cleanup")
 				worldenv = node
 		NodePath("/root/world/Viewport/main/map/main_map/zones/main_zone"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone"):
-			if (LL_config_fireflies):
+			if (config.fireflies):
 				node.add_child(LL_fireflies)
 				LL_fireflies_loaded = true
-			if (LL_config_lighthouse):
+			if (config.lighthouse):
 				node.add_child(LL_lighthouse)
 				LL_lighthouse_loaded = true
 			node.connect("tree_exiting", self, "_cleanup")
 			main_zone = node
 		NodePath("/root/world/Viewport/main/entities/campfire"):
-			if (LL_config_campfire):
+			if (config.campfire):
 				print(ID + ": Campfire was found, loading LL scene on top of it")
 				node.add_child(LL_campfire)
 				LL_campfire_loaded = true
