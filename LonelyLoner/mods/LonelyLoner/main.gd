@@ -78,28 +78,33 @@ func _emit_day():
 
 func _cleanup():
 	if is_instance_valid(worldenv):
-		print(ID + ": Unloading " + str(worldenv))
-		self.disconnect("hour_has_passed", self, "_set_color_by_time")
+		if (LL_config_worldenv):
+			print(ID + ": Unloading " + str(worldenv))
+			self.disconnect("hour_has_passed", self, "_set_color_by_time")
+			LL_worldenv_loaded = false
 		worldenv.disconnect("tree_exiting", self, "_cleanup")
 		worldenv = null
-		LL_worldenv_loaded = false
+
 	if is_instance_valid(main_zone):
 		print(ID + ": Unloading " + str(main_zone))
+		if (LL_config_fireflies):
+			main_zone.remove_child(LL_fireflies)
+			LL_fireflies_loaded = false
+		if (LL_config_lighthouse):
+			main_zone.remove_child(LL_lighthouse)
+			LL_lighthouse_loaded = false
 		main_zone.disconnect("tree_exiting", self, "_cleanup")
-		main_zone.remove_child(LL_fireflies)
-		main_zone.remove_child(LL_lighthouse)
 		main_zone = null
-		LL_fireflies_loaded = false
-		LL_lighthouse_loaded = false
 	_cleanup_campfire()
 
 func _cleanup_campfire():
 	if is_instance_valid(campfire):
-		print(ID + ": Unloading " + str(campfire))
+		if (LL_config_campfire):
+			print(ID + ": Unloading " + str(campfire))
+			campfire.remove_child(LL_campfire)
+			LL_campfire_loaded = false
 		campfire.disconnect("tree_exiting", self, "_cleanup")
-		campfire.remove_child(LL_campfire)
 		campfire = null
-		LL_campfire_loaded = false
 
 func _node_scanner(node: Node):
 	match node.get_path():
