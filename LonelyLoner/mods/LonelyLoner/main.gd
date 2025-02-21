@@ -27,7 +27,7 @@ var irl_min_timer:Timer
 var irl_hour_timer:Timer
 var irl_day_timer:Timer
 var lh_timer:Timer
-var mode = "IngameTime"
+
 var check_lh = false
 var ingame_minute_length = 0.1
 
@@ -42,6 +42,13 @@ var LL_config_fireflies = true
 var LL_config_campfire = true
 var LL_config_lighthouse = true
 
+enum TimeMode {
+	INGAMETIME,
+	REALTIME,
+}
+
+onready var mode = TimeMode.REALTIME
+
 func _ready():
 	print(ID + " has loaded!")
 	get_tree().connect("node_added", self, "_node_scanner")
@@ -50,7 +57,7 @@ func _ready():
 func _startup():
 	if (LL_config_timeapi):
 		match mode:
-			"RealTime":
+			TimeMode.REALTIME:
 				check_time()
 				create_timer(check_time_timer, 60, "check_time") # Set the interval at which to poll irl time
 				create_timer(irl_second_timer, 1, "_emit_second")
@@ -58,7 +65,7 @@ func _startup():
 				create_timer(irl_hour_timer, 3600, "_emit_hour")
 				create_timer(irl_day_timer, 86400, "_emit_day")
 				#create_timer(sec_timer, 1, "_poll_long_haul")
-			"IngameTime":
+			TimeMode.INGAMETIME:
 				create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
 				create_timer(set_color_timer, ingame_minute_length, "_set_color_by_time")
 				#create_timer(sec_timer, 1, "_poll_long_haul")
@@ -175,11 +182,11 @@ func _in_game_time_has_passed():
 
 func check_time():
 	match mode:
-		"RealTime":
+		TimeMode.REALTIME:
 			real_time = Time.get_time_dict_from_system()
 			#print(ID + ": " + str(real_time)) # Just for debug to make sure it be working
 			return real_time
-		"IngameTime":
+		TimeMode.INGAMETIME:
 			#print(ID + ": " + str(ingame_time)) # Just for debug to make sure it be working
 			return ingame_time
 
@@ -187,10 +194,10 @@ func check_time():
 func _poll_long_haul():
 	if check_lh == true:
 		match mode:
-			"RealTime":
+			TimeMode.REALTIME:
 				if real_time["minute"] == 30 || 0:
 					lh_timer = _create_long_haul_timer(lh_timer, 1800, "check_time")
-			"IngameTime":
+			TimeMode.INGAMETIME:
 				if ingame_time["minute"] == 30 || 0:
 					pass # Call func that you want on that interval, will run multiple times, haven't done that logic yet
 
