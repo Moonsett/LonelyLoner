@@ -210,6 +210,7 @@ script = ExtResource( 1 )
 
 [node name="light" type="Spatial" parent="."]
 transform = Transform( 0.915187, 0, 0.40303, 0, 1, 0, -0.40303, 0, 0.915187, 0, 0, 0 )
+visible = false
 
 [node name="anchor" type="Spatial" parent="light"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0 )
@@ -241,6 +242,7 @@ omni_range = 4.83779
 
 [node name="lighthouse_light_glass_mesh" type="MeshInstance" parent="."]
 transform = Transform( 3.94, 0, 0, 0, 3.94, 0, 0, 0, 3.94, 0.131794, 0, -0.0494766 )
+visible = false
 mesh = SubResource( 6 )
 material/0 = SubResource( 17 )
 
