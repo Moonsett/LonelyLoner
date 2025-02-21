@@ -30,10 +30,18 @@ var lh_timer:Timer
 var mode = "IngameTime"
 var check_lh = false
 var ingame_minute_length = 0.1
-var LL_fireflies_loaded = false
+
 var LL_worldenv_loaded = false
+var LL_fireflies_loaded = false
 var LL_campfire_loaded = false
 var LL_lighthouse_loaded = false
+
+var LL_config_timeapi = false
+var LL_config_worldenv = false
+var LL_config_fireflies = true
+var LL_config_campfire = false
+var LL_config_lighthouse = false
+
 
 func _ready():
 	print(ID + " has loaded!")
@@ -41,20 +49,21 @@ func _ready():
 	_startup()
 
 func _startup():
-	match mode:
-		"RealTime":
-			check_time()
-			create_timer(check_time_timer, 60, "check_time") # Set the interval at which to poll irl time
-			create_timer(irl_second_timer, 1, "_emit_second")
-			create_timer(irl_min_timer, 60, "_emit_minute")
-			create_timer(irl_hour_timer, 3600, "_emit_hour")
-			create_timer(irl_day_timer, 86400, "_emit_day")
-			#create_timer(sec_timer, 1, "_poll_long_haul")
-		"IngameTime":
-			create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
-			create_timer(set_color_timer, ingame_minute_length, "_set_color_by_time")
-			#create_timer(sec_timer, 1, "_poll_long_haul")
-			create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
+	if (LL_config_timeapi):
+		match mode:
+			"RealTime":
+				check_time()
+				create_timer(check_time_timer, 60, "check_time") # Set the interval at which to poll irl time
+				create_timer(irl_second_timer, 1, "_emit_second")
+				create_timer(irl_min_timer, 60, "_emit_minute")
+				create_timer(irl_hour_timer, 3600, "_emit_hour")
+				create_timer(irl_day_timer, 86400, "_emit_day")
+				#create_timer(sec_timer, 1, "_poll_long_haul")
+			"IngameTime":
+				create_timer(check_time_timer, ingame_minute_length, "check_time") # Set the interval at which to poll in game time
+				create_timer(set_color_timer, ingame_minute_length, "_set_color_by_time")
+				#create_timer(sec_timer, 1, "_poll_long_haul")
+				create_timer(in_game_min_timer, ingame_minute_length, "_in_game_time_has_passed")
 
 func _emit_second():
 	emit_signal("second_has_passed")
@@ -94,27 +103,32 @@ func _cleanup_campfire():
 		LL_campfire_loaded = false
 
 func _node_scanner(node: Node):
-	if node.get_path() == "/root/world/Viewport/main/map/main_map/WorldEnvironment" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment":
-		self.connect("hour_has_passed", self, "_set_color_by_time")
-		node.connect("tree_exiting", self, "_cleanup")
-		worldenv = node
-		LL_worldenv_loaded = true
-		print(ID + ": Correctly found worldenv: " + str(node))
-		_set_color_by_time()
-	if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone":
-		node.add_child(LL_fireflies)
-		node.add_child(LL_lighthouse)
-		node.connect("tree_exiting", self, "_cleanup")
-		main_zone = node
-		LL_fireflies_loaded = true
-		LL_lighthouse_loaded = true
-	if node.get_path() == "/root/world/Viewport/main/entities/campfire":
-		print(ID + ": Campfire was found, loading LL scene on top of it")
-		node.add_child(LL_campfire)
-		node.connect("tree_exiting", self, "_cleanup_campfire")
-		campfire = node
-		LL_campfire_loaded = true
-		print(ID + ": Loaded LL_campfire overtop of campfire")
+	if (LL_config_worldenv):
+		if node.get_path() == "/root/world/Viewport/main/map/main_map/WorldEnvironment" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment":
+			self.connect("hour_has_passed", self, "_set_color_by_time")
+			node.connect("tree_exiting", self, "_cleanup")
+			worldenv = node
+			LL_worldenv_loaded = true
+			print(ID + ": Correctly found worldenv: " + str(node))
+			_set_color_by_time()
+	if (LL_config_fireflies || LL_config_lighthouse):
+		if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone":
+			if (LL_config_fireflies):
+				node.add_child(LL_fireflies)
+				LL_fireflies_loaded = true
+			if (LL_config_lighthouse):
+				node.add_child(LL_lighthouse)
+				LL_lighthouse_loaded = true
+			node.connect("tree_exiting", self, "_cleanup")
+			main_zone = node
+	if (LL_config_campfire):
+		if node.get_path() == "/root/world/Viewport/main/entities/campfire":
+			print(ID + ": Campfire was found, loading LL scene on top of it")
+			node.add_child(LL_campfire)
+			node.connect("tree_exiting", self, "_cleanup_campfire")
+			campfire = node
+			LL_campfire_loaded = true
+			print(ID + ": Loaded LL_campfire overtop of campfire")
 
 func _physics_process(delta):
 	pass
