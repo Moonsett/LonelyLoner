@@ -82,8 +82,8 @@ func _cleanup():
 			print(ID + ": Unloading " + str(worldenv))
 			self.disconnect("hour_has_passed", self, "_set_color_by_time")
 			LL_worldenv_loaded = false
-		worldenv.disconnect("tree_exiting", self, "_cleanup")
-		worldenv = null
+			worldenv.disconnect("tree_exiting", self, "_cleanup")
+			worldenv = null
 
 	if is_instance_valid(main_zone):
 		print(ID + ": Unloading " + str(main_zone))
@@ -103,8 +103,8 @@ func _cleanup_campfire():
 			print(ID + ": Unloading " + str(campfire))
 			campfire.remove_child(LL_campfire)
 			LL_campfire_loaded = false
-		campfire.disconnect("tree_exiting", self, "_cleanup")
-		campfire = null
+			campfire.disconnect("tree_exiting", self, "_cleanup")
+			campfire = null
 
 func _node_scanner(node: Node):
 	match node.get_path():
@@ -114,8 +114,8 @@ func _node_scanner(node: Node):
 				LL_worldenv_loaded = true
 				print(ID + ": Correctly found worldenv: " + str(node))
 				_set_color_by_time()
-			node.connect("tree_exiting", self, "_cleanup")
-			worldenv = node
+				node.connect("tree_exiting", self, "_cleanup")
+				worldenv = node
 		NodePath("/root/world/Viewport/main/map/main_map/zones/main_zone"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone"):
 			if (LL_config_fireflies):
 				node.add_child(LL_fireflies)
@@ -131,8 +131,8 @@ func _node_scanner(node: Node):
 				node.add_child(LL_campfire)
 				LL_campfire_loaded = true
 				print(ID + ": Loaded LL_campfire overtop of campfire")
-			node.connect("tree_exiting", self, "_cleanup_campfire")
-			campfire = node
+				node.connect("tree_exiting", self, "_cleanup_campfire")
+				campfire = node
 
 func _physics_process(delta):
 	pass
