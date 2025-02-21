@@ -102,16 +102,16 @@ func _cleanup_campfire():
 		LL_campfire_loaded = false
 
 func _node_scanner(node: Node):
-	if (LL_config_worldenv):
-		if node.get_path() == "/root/world/Viewport/main/map/main_map/WorldEnvironment" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment":
-			self.connect("hour_has_passed", self, "_set_color_by_time")
+	match node.get_path():
+		NodePath("/root/world/Viewport/main/map/main_map/WorldEnvironment"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment"):
+			if (LL_config_worldenv):
+				self.connect("hour_has_passed", self, "_set_color_by_time")
+				LL_worldenv_loaded = true
+				print(ID + ": Correctly found worldenv: " + str(node))
+				_set_color_by_time()
 			node.connect("tree_exiting", self, "_cleanup")
 			worldenv = node
-			LL_worldenv_loaded = true
-			print(ID + ": Correctly found worldenv: " + str(node))
-			_set_color_by_time()
-	if (LL_config_fireflies || LL_config_lighthouse):
-		if node.get_path() == "/root/world/Viewport/main/map/main_map/zones/main_zone" || node.get_path() == "/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone":
+		NodePath("/root/world/Viewport/main/map/main_map/zones/main_zone"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone"):
 			if (LL_config_fireflies):
 				node.add_child(LL_fireflies)
 				LL_fireflies_loaded = true
@@ -120,14 +120,14 @@ func _node_scanner(node: Node):
 				LL_lighthouse_loaded = true
 			node.connect("tree_exiting", self, "_cleanup")
 			main_zone = node
-	if (LL_config_campfire):
-		if node.get_path() == "/root/world/Viewport/main/entities/campfire":
-			print(ID + ": Campfire was found, loading LL scene on top of it")
-			node.add_child(LL_campfire)
+		NodePath("/root/world/Viewport/main/entities/campfire"):
+			if (LL_config_campfire):
+				print(ID + ": Campfire was found, loading LL scene on top of it")
+				node.add_child(LL_campfire)
+				LL_campfire_loaded = true
+				print(ID + ": Loaded LL_campfire overtop of campfire")
 			node.connect("tree_exiting", self, "_cleanup_campfire")
 			campfire = node
-			LL_campfire_loaded = true
-			print(ID + ": Loaded LL_campfire overtop of campfire")
 
 func _physics_process(delta):
 	pass
