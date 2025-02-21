@@ -7,7 +7,7 @@ signal day_has_passed
 
 const ID = "LonelyLoner"
 onready var real_time = {"hour": 0, "minute": 0, "second": 0}
-onready var ingame_time = {"hour": 21, "minute": 30, "second": 0}
+onready var ingame_time = {"hour": 23, "minute": 30, "second": 0}
 
 onready var worldenv:WorldEnvironment
 onready var main_zone
@@ -36,12 +36,11 @@ var LL_fireflies_loaded = false
 var LL_campfire_loaded = false
 var LL_lighthouse_loaded = false
 
-var LL_config_timeapi = false
-var LL_config_worldenv = false
+var LL_config_timeapi = true
+var LL_config_worldenv = true
 var LL_config_fireflies = true
-var LL_config_campfire = false
-var LL_config_lighthouse = false
-
+var LL_config_campfire = true
+var LL_config_lighthouse = true
 
 func _ready():
 	print(ID + " has loaded!")
@@ -138,7 +137,8 @@ func _set_color_by_time():
 		var time = check_time()
 		match time["hour"]:
 			0, 1, 2, 3, 4, 20, 21, 22, 23, 24:
-				worldenv.des_color = Color("#14253e")
+				#worldenv.des_color = Color("#14253e")
+				worldenv.des_color = Color("#1c2c46")
 			5, 6, 7:
 				worldenv.des_color = Color("#ffd6e7")
 			17, 18, 19:
