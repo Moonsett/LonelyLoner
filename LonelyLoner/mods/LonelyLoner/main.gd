@@ -42,6 +42,7 @@ class LL_Config:
 	var fireflies: bool = true
 	var campfire: bool = true
 	var lighthouse: bool = true
+	var debug: bool = true
 
 enum TimeMode {
 	INGAMETIME,
@@ -88,14 +89,14 @@ func _emit_day():
 func _cleanup():
 	if is_instance_valid(worldenv):
 		if (config.worldenv):
-			print(ID + ": Unloading " + str(worldenv))
+			if config.debug: print(ID + ": Unloading " + str(worldenv))
 			self.disconnect("hour_has_passed", self, "_set_color_by_time")
 			LL_worldenv_loaded = false
 			worldenv.disconnect("tree_exiting", self, "_cleanup")
 			worldenv = null
 
 	if is_instance_valid(main_zone):
-		print(ID + ": Unloading " + str(main_zone))
+		if config.debug: print(ID + ": Unloading " + str(main_zone))
 		if (config.fireflies):
 			main_zone.remove_child(LL_fireflies)
 			LL_fireflies_loaded = false
@@ -109,7 +110,7 @@ func _cleanup():
 func _cleanup_campfire():
 	if is_instance_valid(campfire):
 		if (config.campfire):
-			print(ID + ": Unloading " + str(campfire))
+			if config.debug: print(ID + ": Unloading " + str(campfire))
 			campfire.remove_child(LL_campfire)
 			LL_campfire_loaded = false
 			campfire.disconnect("tree_exiting", self, "_cleanup")
@@ -121,7 +122,7 @@ func _node_scanner(node: Node):
 			if (config.worldenv):
 				self.connect("hour_has_passed", self, "_set_color_by_time")
 				LL_worldenv_loaded = true
-				print(ID + ": Correctly found worldenv: " + str(node))
+				if config.debug: print(ID + ": Correctly found worldenv: " + str(node))
 				_set_color_by_time()
 				node.connect("tree_exiting", self, "_cleanup")
 				worldenv = node
@@ -136,10 +137,10 @@ func _node_scanner(node: Node):
 			main_zone = node
 		NodePath("/root/world/Viewport/main/entities/campfire"):
 			if (config.campfire):
-				print(ID + ": Campfire was found, loading LL scene on top of it")
+				if config.debug: print(ID + ": Campfire was found, loading LL scene on top of it")
 				node.add_child(LL_campfire)
 				LL_campfire_loaded = true
-				print(ID + ": Loaded LL_campfire overtop of campfire")
+				if config.debug: print(ID + ": Loaded LL_campfire overtop of campfire")
 				node.connect("tree_exiting", self, "_cleanup_campfire")
 				campfire = node
 
