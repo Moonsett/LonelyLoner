@@ -58,6 +58,7 @@ enum TimeMode {
 onready var mode = TimeMode.INGAMETIME
 
 onready var tb = get_node_or_null("/root/TackleBox")
+onready var dn = get_node_or_null("/root/nubz4lif.daynightcycle")
 
 func _init_config():
 	var saved_config = tb.get_mod_config(ID)
@@ -67,16 +68,27 @@ func _init_config():
 			saved_config[key] = LL_config_default[key]
 
 	config = saved_config
+
+	_check_config()
+
 	tb.set_mod_config(ID, config)
 	tb.connect("mod_config_updated", self, "_on_config_update")
+
+func _check_config():
+	if dn != null:
+		if config["debug"]: print(ID + ": DayAndNight detected, disabling world_env modifications.")
+		config["world_env"] = false
+	if (config["force_time"] > 4) || (config["force_time"] < 0):
+		if config["debug"]: print(ID + ": force_time config option is not set correctly, resetting to 0.")
+		config["force_time"] = 0
 
 func _on_config_update(mod_id: String, new_config: Dictionary):
 	if mod_id != ID:
 		return
-	if config.hash() == new_config.hash():
-		return
 
 	config = new_config
+	_check_config()
+
 
 func get_config():
 	return config
