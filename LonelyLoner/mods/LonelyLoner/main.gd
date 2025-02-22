@@ -36,13 +36,15 @@ var LL_fireflies_loaded = false
 var LL_campfire_loaded = false
 var LL_lighthouse_loaded = false
 
-class LL_Config:
-	var timeapi: bool = true
-	var worldenv: bool = true
-	var fireflies: bool = true
-	var campfire: bool = true
-	var lighthouse: bool = true
-	var debug: bool = true
+var config: Dictionary
+var LL_config_default: Dictionary = {
+	"timeapi": true,
+	"worldenv": true,
+	"fireflies": true,
+	"campfire": true,
+	"lighthouse": true,
+	"debug": false,
+}
 
 enum TimeMode {
 	INGAMETIME,
@@ -50,15 +52,40 @@ enum TimeMode {
 }
 
 onready var mode = TimeMode.INGAMETIME
-onready var config = LL_Config.new()
+
+onready var tb = get_node_or_null("/root/TackleBox")
+
+func _init_config():
+	var saved_config = tb.get_mod_config(ID)
+
+	for key in LL_config_default.keys():
+		if !saved_config.has(key):
+			saved_config[key] = LL_config_default[key]
+
+	config = saved_config
+	tb.set_mod_config(ID, config)
+	tb.connect("mod_config_updated", self, "_on_config_update")
+
+func _on_config_update(mod_id: String, new_config: Dictionary):
+	if mod_id != ID:
+		return
+	if config.hash() == new_config.hash():
+		return
+
+	config = new_config
+
+func get_config():
+	return config
 
 func _ready():
 	print(ID + " has loaded!")
+	if tb != null:
+		_init_config()
 	get_tree().connect("node_added", self, "_node_scanner")
 	_startup()
 
 func _startup():
-	if (config.timeapi):
+	if config["timeapi"]:
 		match mode:
 			TimeMode.REALTIME:
 				check_time()
@@ -88,19 +115,19 @@ func _emit_day():
 
 func _cleanup():
 	if is_instance_valid(worldenv):
-		if (config.worldenv):
-			if config.debug: print(ID + ": Unloading " + str(worldenv))
+		if (config["worldenv"]):
+			if config["debug"]: print(ID + ": Unloading " + str(worldenv))
 			self.disconnect("hour_has_passed", self, "_set_color_by_time")
 			LL_worldenv_loaded = false
 			worldenv.disconnect("tree_exiting", self, "_cleanup")
 			worldenv = null
 
 	if is_instance_valid(main_zone):
-		if config.debug: print(ID + ": Unloading " + str(main_zone))
-		if (config.fireflies):
+		if config["debug"]: print(ID + ": Unloading " + str(main_zone))
+		if (config["fireflies"]):
 			main_zone.remove_child(LL_fireflies)
 			LL_fireflies_loaded = false
-		if (config.lighthouse):
+		if (config["lighthouse"]):
 			main_zone.remove_child(LL_lighthouse)
 			LL_lighthouse_loaded = false
 		main_zone.disconnect("tree_exiting", self, "_cleanup")
@@ -109,7 +136,7 @@ func _cleanup():
 
 func _cleanup_campfire():
 	if is_instance_valid(campfire):
-		if (config.campfire):
+		if (config["campfire"]):
 			if config.debug: print(ID + ": Unloading " + str(campfire))
 			campfire.remove_child(LL_campfire)
 			LL_campfire_loaded = false
@@ -119,28 +146,28 @@ func _cleanup_campfire():
 func _node_scanner(node: Node):
 	match node.get_path():
 		NodePath("/root/world/Viewport/main/map/main_map/WorldEnvironment"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment"):
-			if (config.worldenv):
+			if (config["worldenv"]):
 				self.connect("hour_has_passed", self, "_set_color_by_time")
 				LL_worldenv_loaded = true
-				if config.debug: print(ID + ": Correctly found worldenv: " + str(node))
+				if config["debug"]: print(ID + ": Correctly found worldenv: " + str(node))
 				_set_color_by_time()
 				node.connect("tree_exiting", self, "_cleanup")
 				worldenv = node
 		NodePath("/root/world/Viewport/main/map/main_map/zones/main_zone"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/zones/main_zone"):
-			if (config.fireflies):
+			if (config["fireflies"]):
 				node.add_child(LL_fireflies)
 				LL_fireflies_loaded = true
-			if (config.lighthouse):
+			if (config["lighthouse"]):
 				node.add_child(LL_lighthouse)
 				LL_lighthouse_loaded = true
 			node.connect("tree_exiting", self, "_cleanup")
 			main_zone = node
 		NodePath("/root/world/Viewport/main/entities/campfire"):
-			if (config.campfire):
-				if config.debug: print(ID + ": Campfire was found, loading LL scene on top of it")
+			if (config["campfire"]):
+				if config["debug"]: print(ID + ": Campfire was found, loading LL scene on top of it")
 				node.add_child(LL_campfire)
 				LL_campfire_loaded = true
-				if config.debug: print(ID + ": Loaded LL_campfire overtop of campfire")
+				if config["debug"]: print(ID + ": Loaded LL_campfire overtop of campfire")
 				node.connect("tree_exiting", self, "_cleanup_campfire")
 				campfire = node
 
