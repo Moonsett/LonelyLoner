@@ -81,6 +81,7 @@ func _ready():
 	print(ID + " has loaded!")
 	if tb != null:
 		_init_config()
+	else: config = LL_config_default
 	get_tree().connect("node_added", self, "_node_scanner")
 	_startup()
 
@@ -162,14 +163,13 @@ func _node_scanner(node: Node):
 				LL_lighthouse_loaded = true
 			node.connect("tree_exiting", self, "_cleanup")
 			main_zone = node
-		NodePath("/root/world/Viewport/main/entities/campfire"):
-			if (config["campfire"]):
-				if config["debug"]: print(ID + ": Campfire was found, loading LL scene on top of it")
-				node.add_child(LL_campfire)
-				LL_campfire_loaded = true
-				if config["debug"]: print(ID + ": Loaded LL_campfire overtop of campfire")
-				node.connect("tree_exiting", self, "_cleanup_campfire")
-				campfire = node
+	if node.has_node("campfire_flame") && config["campfire"]:
+		if config["debug"]: print(ID + ": Campfire was found, loading LL scene on top of it")
+		node.add_child(LL_campfire)
+		LL_campfire_loaded = true
+		if config["debug"]: print(ID + ": Loaded LL_campfire overtop of campfire")
+		node.connect("tree_exiting", self, "_cleanup_campfire")
+		campfire = node
 
 func _physics_process(delta):
 	pass
