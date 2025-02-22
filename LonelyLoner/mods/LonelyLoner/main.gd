@@ -38,11 +38,11 @@ var LL_lighthouse_loaded = false
 
 var config: Dictionary
 var LL_config_default: Dictionary = {
-	"timeapi": true,
 	"worldenv": true,
 	"fireflies": true,
 	"campfire": true,
 	"lighthouse": true,
+	"timeapi": true,
 	"debug": false,
 }
 
