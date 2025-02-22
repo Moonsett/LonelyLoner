@@ -6,6 +6,7 @@ signal hour_has_passed
 signal day_has_passed
 
 const ID = "LonelyLoner"
+const mod_ver = "0.2.0"
 onready var real_time = {"hour": 0, "minute": 0, "second": 0}
 onready var ingame_time = {"hour": 23, "minute": 30, "second": 0}
 
@@ -36,14 +37,17 @@ var LL_fireflies_loaded = false
 var LL_campfire_loaded = false
 var LL_lighthouse_loaded = false
 
+
 var config: Dictionary
 var LL_config_default: Dictionary = {
-	"worldenv": true,
+	"world_env": true,
 	"fireflies": true,
 	"campfire": true,
 	"lighthouse": true,
-	"timeapi": true,
+	"real_time": false,
+	"force_time": 0,
 	"debug": false,
+	"config_ver": {"ver": mod_ver},
 }
 
 enum TimeMode {
@@ -86,7 +90,7 @@ func _ready():
 	_startup()
 
 func _startup():
-	if config["timeapi"]:
+	if config["force_time"] == 0:
 		match mode:
 			TimeMode.REALTIME:
 				check_time()
@@ -116,7 +120,7 @@ func _emit_day():
 
 func _cleanup():
 	if is_instance_valid(worldenv):
-		if (config["worldenv"]):
+		if (config["world_env"]):
 			if config["debug"]: print(ID + ": Unloading " + str(worldenv))
 			self.disconnect("hour_has_passed", self, "_set_color_by_time")
 			LL_worldenv_loaded = false
@@ -147,7 +151,7 @@ func _cleanup_campfire():
 func _node_scanner(node: Node):
 	match node.get_path():
 		NodePath("/root/world/Viewport/main/map/main_map/WorldEnvironment"), NodePath("/root/main_menu/world/Viewport/main/map/main_map/WorldEnvironment"):
-			if (config["worldenv"]):
+			if (config["world_env"]):
 				self.connect("hour_has_passed", self, "_set_color_by_time")
 				LL_worldenv_loaded = true
 				if config["debug"]: print(ID + ": Correctly found worldenv: " + str(node))
